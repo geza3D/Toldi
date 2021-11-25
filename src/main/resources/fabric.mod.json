@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "toldi",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Toldi",
+  "description": "This is a Utility Mod.",
   "authors": [
-    "Me!"
+    "geza3D"
   ],
   "contact": {
     "homepage": "https://fabricmc.net/",
@@ -19,11 +19,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "me.geza3d.toldi.Toldi"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "toldi.mixins.json"
   ],
 
   "depends": {
