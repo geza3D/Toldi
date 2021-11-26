@@ -11,8 +11,8 @@ public class Debug extends Module {
 
 	@Listener
 	public void onPacket() {
-		PacketCallback.OUT.register(packet -> {
-			Toldi.LOGGER.info(packet.getClass());
+		PacketCallback.IN.register(packet -> {
+			if(getStatus()) Toldi.LOGGER.info(packet.getClass());
 			return ActionResult.SUCCESS;
 		});
 	}

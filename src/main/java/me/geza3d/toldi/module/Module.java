@@ -7,6 +7,9 @@ import java.lang.annotation.Target;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+
+import me.geza3d.toldi.Toldi;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.TranslatableText;
@@ -17,7 +20,7 @@ public class Module {
 	protected String name;
 	public String info = "";
 	protected String desc;
-	protected boolean status = true;
+	protected boolean status = false;
 	
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
@@ -47,8 +50,8 @@ public class Module {
 		if(type == null) {
 			throw new RuntimeException("Unregistered module! Register " + this.getClass().toString() + " using the @ModuleReg annotiation");
 		}
-		name = "module." + this.getClass().getName().toLowerCase() + ".name";
-		desc = "module." + this.getClass().getName().toLowerCase() + ".description";
+		name = "module." + Toldi.MODID + this.getClass().getSimpleName().toLowerCase() + ".name";
+		desc = "module." + Toldi.MODID + this.getClass().getSimpleName().toLowerCase() + ".description";
 		this.type = type.type();
 		initListeners();
 	}
@@ -78,7 +81,12 @@ public class Module {
 	}
 	
 	public String getRawName() {
-		return new TranslatableText(name).asString();
+		try {
+			return new TranslatableText(name).parse(null, null, 0).getString();
+		} catch (CommandSyntaxException e) {
+			e.printStackTrace();
+		}
+		return name;
 	}
 	
 	public String getName() {

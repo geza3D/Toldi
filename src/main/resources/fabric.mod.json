@@ -3,6 +3,8 @@
   "id": "toldi",
   "version": "${version}",
 
+  "accessWidener" : "toldi.accesswidener",
+
   "name": "Toldi",
   "description": "This is a Utility Mod.",
   "authors": [

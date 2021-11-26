@@ -1,0 +1,11 @@
+{
+     "providers": [
+         {
+             "type": "ttf",
+             "file": "toldi:impact_font.ttf",
+ 			"shift": [0, -1.0],
+ 			"size": 15.0,
+ 			"oversample": 2.0
+         }
+ 	]
+}

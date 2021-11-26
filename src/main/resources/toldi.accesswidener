@@ -1,0 +1,3 @@
+accessWidener	v1	named
+
+accessible   method   net/minecraft/client/font/TextRenderer   getFontStorage   (Lnet/minecraft/util/Identifier;)Lnet/minecraft/client/font/FontStorage;
