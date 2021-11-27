@@ -18,5 +18,17 @@ public class NumberSetting<T extends Number> extends Setting<T> {
 	public T getMax() {
 		return max;
 	}
+	
+	public static class IntegerSetting extends NumberSetting<Integer> {
+		public IntegerSetting(SettingHolder holder, String name, Integer defaultValue, Integer min, Integer max) {
+			super(holder, name, defaultValue, min, max);
+		}
+	}
+	
+	public static class DoubleSetting extends NumberSetting<Double> {
+		public DoubleSetting(SettingHolder holder, String name, Double defaultValue, Double min, Double max) {
+			super(holder, name, defaultValue, min, max);
+		}
+	}
 
 }

@@ -23,7 +23,7 @@ public class Toldi implements ModInitializer {
 	public void onInitialize() {
 		CLIENT = MinecraftClient.getInstance();
 		TEXTRENDERER = new TextRenderer(id -> {
-			return CLIENT.textRenderer.getFontStorage(new Identifier("impact"));
+			return CLIENT.textRenderer.getFontStorage(new Identifier(MODID, "code_new_roman"));
 		});
 		Modules.registerModules();
 		ClientTickEvents.END_CLIENT_TICK.register(cliet -> {

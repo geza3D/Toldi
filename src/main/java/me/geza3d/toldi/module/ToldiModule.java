@@ -10,11 +10,14 @@ import java.lang.reflect.Method;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import me.geza3d.toldi.Toldi;
+import me.geza3d.toldi.init.Modules;
+import me.geza3d.toldi.module.settings.SettingHolder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
-public class Module {
+public class ToldiModule extends SettingHolder {
 
 	protected EnumModuleType type;
 	protected String name;
@@ -45,25 +48,49 @@ public class Module {
 		}
 	}
 	
-	public Module() {
+	@SuppressWarnings("incomplete-switch")
+	public ToldiModule() {
 		Type type = this.getClass().getAnnotation(Type.class);
 		if(type == null) {
 			throw new RuntimeException("Unregistered module! Register " + this.getClass().toString() + " using the @ModuleReg annotiation");
 		}
-		name = "module." + Toldi.MODID + this.getClass().getSimpleName().toLowerCase() + ".name";
-		desc = "module." + Toldi.MODID + this.getClass().getSimpleName().toLowerCase() + ".description";
+		name = "module." + Toldi.MODID + "." + this.getClass().getSimpleName().toLowerCase() + ".name";
+		desc = "module." + Toldi.MODID + "." + this.getClass().getSimpleName().toLowerCase() + ".description";
 		this.type = type.type();
+		switch(this.type) {
+		case RENDER:
+			Modules.RENDER.add(this);
+			break;
+		case EXPLOIT:
+			Modules.EXPLOIT.add(this);
+			break;
+		case MOVEMENT:
+			Modules.MOVEMENT.add(this);
+			break;
+		case COMBAT:
+			Modules.COMBAT.add(this);
+			break;
+		case WORLD:
+			Modules.WORLD.add(this);
+			break;
+		case PLAYER:
+			Modules.PLAYER.add(this);
+			break;
+		}
+		Modules.ALL.add(this);
 		initListeners();
 	}
 	
 	public void enable() {
 		if(!status) {
+			getPlayer().sendMessage(new LiteralText(getRawName() + " has been enabled."), false);
 			status = true;
 		}
 	}
 	
 	public void disable() {
 		if(status) {
+			getPlayer().sendMessage(new LiteralText(getRawName() + " has been disabled."), false);
 			status = false;
 		}
 	}
@@ -80,6 +107,10 @@ public class Module {
 		return status && getPlayer() != null;
 	}
 	
+	public boolean getRawStatus() {
+		return status;
+	}
+	
 	public String getRawName() {
 		try {
 			return new TranslatableText(name).parse(null, null, 0).getString();
@@ -93,13 +124,17 @@ public class Module {
 		return getRawName() + (info.isEmpty() ? "" : " " + info);
 	}
 	
+	public EnumModuleType getType() {
+		return type;
+	}
+	
 	//Utils
-	public MinecraftClient getMC() {
+	protected MinecraftClient getMC() {
 		return MinecraftClient.getInstance();
 	}
 	
 	@SuppressWarnings("resource")
-	public ClientPlayerEntity getPlayer() {
+	protected ClientPlayerEntity getPlayer() {
 		return getMC().player;
 	}
 }

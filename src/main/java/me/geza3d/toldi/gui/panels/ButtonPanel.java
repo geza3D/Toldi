@@ -4,7 +4,7 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public abstract class ButtonPanel extends Panel {
 
-	MainPanel main;
+	protected MainPanel main;
 	protected String text;
 	
 	public ButtonPanel(MainPanel main, int x, int y, int width, int height, String text) {
@@ -15,7 +15,7 @@ public abstract class ButtonPanel extends Panel {
 	
 	@Override
 	public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		offsettedY = y + main.scrollOffset;
+		y = unOffsettedY + main.scrollOffset;
 		super.render(matrices, mouseX, mouseY, delta);
 	}
 }
