@@ -22,6 +22,8 @@ public class Modules {
 	
 	public static final Map<EnumModuleType, List<ToldiModule>> MODULESBYTYPE = new HashMap<>();
 	
+	public static final Map<String, ToldiModule> MODULESBYNAME = new HashMap<>();
+	
 	public static Debug DEBUG;
 	
 	public static void registerModules() {
@@ -34,5 +36,9 @@ public class Modules {
 		MODULESBYTYPE.put(EnumModuleType.ALL, ALL);
 		
 		DEBUG = new Debug();
+	}
+	
+	public static ToldiModule getModuleByName(String name) {
+		return MODULESBYNAME.get(name);
 	}
 }

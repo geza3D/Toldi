@@ -9,43 +9,43 @@ public enum EnumModuleType implements IModuleType{
 	RENDER {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "render";
+			return "render";
 		}
 	},
 	EXPLOIT {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "exploit";
+			return "exploit";
 		}
 	},
 	MOVEMENT {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "movement";
+			return "movement";
 		}
 	},
 	COMBAT {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "combat";
+			return "combat";
 		}
 	},
 	WORLD {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "world";
+			return "world";
 		}
 	},
 	PLAYER {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "player";
+			return "player";
 		}
 	},
 	ALL {
 		@Override
 		public String getTypeName() {
-			return PREFIX + "all";
+			return "all";
 		}
 	};
 	
@@ -53,7 +53,7 @@ public enum EnumModuleType implements IModuleType{
 	
 	public String getName() {
 		try {
-			return new TranslatableText(getTypeName()).parse(null, null, 0).getString();
+			return new TranslatableText(PREFIX+getTypeName()).parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}

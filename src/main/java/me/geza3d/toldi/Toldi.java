@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import me.geza3d.toldi.gui.clickgui.ClickGui;
+import me.geza3d.toldi.handlers.ConfigHandler;
 import me.geza3d.toldi.init.Modules;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -26,7 +27,9 @@ public class Toldi implements ModInitializer {
 			return CLIENT.textRenderer.getFontStorage(new Identifier(MODID, "code_new_roman"));
 		});
 		Modules.registerModules();
-		ClientTickEvents.END_CLIENT_TICK.register(cliet -> {
+		ConfigHandler.initConfigHandler();
+		
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while(CLIENT.options.keySprint.wasPressed()) {
 				CLIENT.setScreen(new ClickGui());
 			}

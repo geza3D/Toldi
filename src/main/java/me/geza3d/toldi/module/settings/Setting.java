@@ -12,7 +12,7 @@ public class Setting<T> {
 	protected String desc;
 	
 	public Setting(SettingHolder holder, String name, T defaultValue) {
-		this.name = "setting." + Toldi.MODID + "." + name + ".name";
+		this.name = name;
 		this.desc = "setting." + Toldi.MODID + "." + name + ".description";
 		this.value = defaultValue;
 		holder.settings.add(this);
@@ -26,9 +26,18 @@ public class Setting<T> {
 		this.value = value;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public T cast(Object o) {
+		return (T) o;
+	}
+	
+	public String getUntranslatedName() {
+		return name;
+	}
+	
 	public String getName() {
 		try {
-			return new TranslatableText(name).parse(null, null, 0).getString();
+			return new TranslatableText("setting." + Toldi.MODID + "." + name + ".name").parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}
@@ -76,6 +85,11 @@ public class Setting<T> {
 		public void increment() {
 			value++;
 			value %= modes.length;
+		}
+		
+		public void decrement() {
+			value--;
+			if(value < 0) value = modes.length - 1;
 		}
 		
 	}

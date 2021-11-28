@@ -21,12 +21,18 @@ public class ModeSettingButton extends ButtonPanel {
 		fill(matrices, x, y, x + width, y + height, 0xff2b0075);
 		fill(matrices, x + width - Toldi.TEXTRENDERER.getWidth(text), y + height / 2 - 4, x + width, y + height / 2 + 6, 0xff331070);
 		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(setting.getName()), x, y + height / 2 - 4, 0xffffffff);
-		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(text), x + width - Toldi.TEXTRENDERER.getWidth(text), y + height / 2 - 4, 0xffffffff);
+		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText("<" + text + ">"), x + width - Toldi.TEXTRENDERER.getWidth("<" + text + ">"), y + height / 2 - 4, 0xffffffff);
 	}
 	
 	@Override
 	protected void onClick(int mouseX, int mouseY) {
 		setting.increment();
+		text = setting.getMode();
+	}
+	
+	@Override
+	protected void onRightClick(int mouseX, int mouseY) {
+		setting.decrement();
 		text = setting.getMode();
 	}
 

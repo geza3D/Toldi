@@ -54,8 +54,8 @@ public class ToldiModule extends SettingHolder {
 		if(type == null) {
 			throw new RuntimeException("Unregistered module! Register " + this.getClass().toString() + " using the @ModuleReg annotiation");
 		}
-		name = "module." + Toldi.MODID + "." + this.getClass().getSimpleName().toLowerCase() + ".name";
-		desc = "module." + Toldi.MODID + "." + this.getClass().getSimpleName().toLowerCase() + ".description";
+		name = this.getClass().getSimpleName().toLowerCase();
+		desc = this.getClass().getSimpleName().toLowerCase();
 		this.type = type.type();
 		switch(this.type) {
 		case RENDER:
@@ -78,12 +78,12 @@ public class ToldiModule extends SettingHolder {
 			break;
 		}
 		Modules.ALL.add(this);
+		Modules.MODULESBYNAME.put(name, this);
 		initListeners();
 	}
 	
 	public void enable() {
 		if(!status) {
-			getPlayer().sendMessage(new LiteralText(getRawName() + " has been enabled."), false);
 			status = true;
 		}
 	}
@@ -113,7 +113,7 @@ public class ToldiModule extends SettingHolder {
 	
 	public String getRawName() {
 		try {
-			return new TranslatableText(name).parse(null, null, 0).getString();
+			return new TranslatableText("module." + Toldi.MODID + "." + name + ".name").parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}
@@ -126,6 +126,10 @@ public class ToldiModule extends SettingHolder {
 	
 	public EnumModuleType getType() {
 		return type;
+	}
+	
+	public String getUntranslatedName() {
+		return name;
 	}
 	
 	//Utils
