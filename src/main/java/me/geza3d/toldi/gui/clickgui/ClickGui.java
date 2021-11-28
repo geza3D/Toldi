@@ -24,6 +24,13 @@ public class ClickGui extends Screen {
 	List<Panel> panels = new ArrayList<>();
 	public static EnumModuleType selectedType = EnumModuleType.RENDER;
 	public static ToldiModule selectedModule = null;
+	public static int c1 = 0xff384266; //Main
+	public static int c2 = 0xff4a5785; //Secondary
+	public static int c3 = 0xff2c3659; //Button
+	public static int c4 = 0xff6882de; //Button Hovered
+	public static int c5 = 0xff45507a; //Setting Main
+	public static int c6 = 0xff272d45; //Setting Secondary
+	public static int c7 = 0xff33a0ff; //Setting elements
 	
 	public ClickGui() {
 		super(Text.of("clickgui"));

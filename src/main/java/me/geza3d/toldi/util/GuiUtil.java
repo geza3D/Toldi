@@ -1,5 +1,8 @@
 package me.geza3d.toldi.util;
 
+import static org.lwjgl.opengl.GL11.GL_LINE_SMOOTH_HINT;
+import static org.lwjgl.opengl.GL11.GL_NICEST;
+
 import org.lwjgl.opengl.GL11;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -41,7 +44,7 @@ public class GuiUtil {
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         bufferBuilder.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR);
         for(double i = endDegree; i > startDegree; i-=increment) {
-        	bufferBuilder.vertex(x-Math.cos(Math.toRadians(i))*radius, y-Math.sin(Math.toRadians(i))*radius, 0.0D).color(r, g, b, 1).next();
+        	bufferBuilder.vertex(x-Math.cos(Math.toRadians(i))*radius, y-Math.sin(Math.toRadians(i))*radius, 0.0D).color(r, g, b, a).next();
         }
         bufferBuilder.end();
         BufferRenderer.draw(bufferBuilder);

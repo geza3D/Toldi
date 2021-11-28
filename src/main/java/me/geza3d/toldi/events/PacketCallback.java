@@ -11,7 +11,7 @@ public interface PacketCallback{
 			listeners -> packet -> {
 				for(PacketCallback listener : listeners) {
 					ActionResult result = listener.packet(packet);
-					return result;
+					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});
@@ -20,7 +20,7 @@ public interface PacketCallback{
 			listeners -> packet -> {
 				for(PacketCallback listener : listeners) {
 					ActionResult result = listener.packet(packet);
-					return result;
+					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});

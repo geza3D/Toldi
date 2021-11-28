@@ -28,7 +28,7 @@ public class ToldiModule extends SettingHolder {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
 	public static @interface Type {
-		EnumModuleType type();
+		EnumModuleType value();
 	}
 	
 	@Retention(RetentionPolicy.RUNTIME)
@@ -56,7 +56,7 @@ public class ToldiModule extends SettingHolder {
 		}
 		name = this.getClass().getSimpleName().toLowerCase();
 		desc = this.getClass().getSimpleName().toLowerCase();
-		this.type = type.type();
+		this.type = type.value();
 		switch(this.type) {
 		case RENDER:
 			Modules.RENDER.add(this);

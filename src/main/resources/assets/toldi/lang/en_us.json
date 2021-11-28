@@ -1,6 +1,22 @@
 {
+//Types
+"type.toldi.render": "Render",
+"type.toldi.exploit": "Exploit",
+"type.toldi.movement": "Movement",
+"type.toldi.combat": "Combat",
+"type.toldi.world": "World",
+"type.toldi.player": "Player",
+"type.toldi.all": "All",
+
+//Modules
 "module.toldi.debug.name": "Debug",
 "setting.toldi.test1.name": "Test1",
 "setting.toldi.test2.name": "Test2",
-"setting.toldi.test3.name": "Test3"
+"setting.toldi.test3.name": "Test3",
+"setting.toldi.test4.name": "Test4",
+"setting.toldi.test4.a": "A",
+"setting.toldi.test4.b": "B",
+"setting.toldi.test4.c": "C",
+
+"module.toldi.portalgodmode.name": "PortalGodmode"
 }

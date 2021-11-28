@@ -28,7 +28,7 @@ import net.minecraft.util.ActionResult;
 
 public class ConfigHandler {
 
-	public static final String DIR = Toldi.CLIENT.runDirectory.getAbsolutePath().substring(0, Toldi.CLIENT.runDirectory.getAbsolutePath().length()-1) + "toldi\\";
+	public static final String DIR = Toldi.CLIENT.runDirectory.getAbsolutePath() + "\\toldi\\";
 	public static String currentProfile = "default";
 	
 	public static void initConfigHandler(){
@@ -66,6 +66,7 @@ public class ConfigHandler {
 	}
 	
 	private static void loadModules() {
+		System.out.println(DIR);
 		Gson gson = new Gson();
 		for(ToldiModule module : Modules.ALL) {
 			File f = new File(DIR + currentProfile + "\\" + module.getType().getTypeName() + "\\" + module.getUntranslatedName() + ".json");
@@ -88,9 +89,9 @@ public class ConfigHandler {
 	}
 	
 	private static void saveModules() {
-		Map<String, Object> map = new HashMap<>();
 		Gson gson = new Gson();
 		for(ToldiModule module : Modules.ALL) {
+			Map<String, Object> map = new HashMap<>();
 			for(Setting<?> setting : module.settings) {
 				map.put(setting.getUntranslatedName(), setting.getValue());
 			}
@@ -129,6 +130,11 @@ public class ConfigHandler {
 		if(file.exists()) {
 			try {
 				FileWriter w = new FileWriter(file);
+				data = data.replace(",",",\n\t");
+				data = data.replace("{","{\n\t");
+				data = data.replace("}","\n}");
+				data = data.replace("[","[\n\t");
+				data = data.replace("]","\n]");
 				w.write(data);
 				w.close();
 			} catch (IOException e) {

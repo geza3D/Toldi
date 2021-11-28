@@ -1,6 +1,5 @@
 package me.geza3d.toldi.gui.panels.buttons;
 
-import java.awt.Color;
 import java.util.Random;
 
 import me.geza3d.toldi.Toldi;
@@ -28,13 +27,13 @@ public class CategoryButton extends ButtonPanel {
 
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		int rgb = new Color(0x5700ed, false).getRGB();
+		int rgb = ClickGui.c3;
 		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || ClickGui.selectedType == type) {
-			rgb = new Color(0x7321ff, false).getRGB();
+			rgb = ClickGui.c4;
 			r++;
 			r%=360;
 		}
-		GuiUtil.drawPolygon(matrices, 0+r, 360+r, 5, 15, x, y, 0xFF23005e);
+		GuiUtil.drawPolygon(matrices, 0+r, 360+r, 5, 15, x, y, ClickGui.c2);
 		GuiUtil.drawPolygon(matrices, 0+r, 360+r, 5, 13, x+2, y+2, rgb);
 		Toldi.CLIENT.getItemRenderer().renderGuiItemIcon(new ItemStack(item), x+7, y+7);
 	}

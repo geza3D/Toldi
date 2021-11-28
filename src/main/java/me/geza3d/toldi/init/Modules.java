@@ -7,6 +7,7 @@ import java.util.Map;
 
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
+import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
 import me.geza3d.toldi.module.modules.player.Debug;
 
 public class Modules {
@@ -24,6 +25,10 @@ public class Modules {
 	
 	public static final Map<String, ToldiModule> MODULESBYNAME = new HashMap<>();
 	
+	//Exploit
+	public static PortalGodmode PORTALGODMODE;
+	
+	//Player
 	public static Debug DEBUG;
 	
 	public static void registerModules() {
@@ -36,6 +41,7 @@ public class Modules {
 		MODULESBYTYPE.put(EnumModuleType.ALL, ALL);
 		
 		DEBUG = new Debug();
+		PORTALGODMODE = new PortalGodmode();
 	}
 	
 	public static ToldiModule getModuleByName(String name) {

@@ -10,7 +10,7 @@ public interface JoinLeaveCallback {
 			listeners -> () -> {
 				for(JoinLeaveCallback listener : listeners) {
 					ActionResult result = listener.handle();
-					return result;
+					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});
@@ -19,7 +19,7 @@ public interface JoinLeaveCallback {
 			listeners -> () -> {
 				for(JoinLeaveCallback listener : listeners) {
 					ActionResult result = listener.handle();
-					return result;
+					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});

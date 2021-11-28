@@ -7,7 +7,7 @@ import me.geza3d.toldi.module.settings.NumberSetting.IntegerSetting;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
 import me.geza3d.toldi.module.settings.Setting.ModeSetting;
 
-@ToldiModule.Type(type = EnumModuleType.PLAYER)
+@ToldiModule.Type(EnumModuleType.PLAYER)
 public class Debug extends ToldiModule {
 
 	IntegerSetting test1 = new IntegerSetting(this, "test1", 5, 0, 10);

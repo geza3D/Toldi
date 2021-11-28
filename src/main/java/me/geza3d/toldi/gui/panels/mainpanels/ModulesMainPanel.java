@@ -24,7 +24,7 @@ public class ModulesMainPanel extends MainPanel {
 	
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, new Color(0x360094, false).getRGB());
+		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, ClickGui.c1);
 		if(prevType != ClickGui.selectedType) {
 			prevType = ClickGui.selectedType;
 			scrollOffset = 0;
@@ -38,7 +38,7 @@ public class ModulesMainPanel extends MainPanel {
 		for(ButtonPanel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}
-		fill(matrices, x, y, x+width, y+14, new Color(0x23005e, false).getRGB());
+		fill(matrices, x, y, x+width, y+14, ClickGui.c2);
 		drawCenteredText(matrices, Toldi.TEXTRENDERER, ClickGui.selectedType.getName(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
 	}
 
