@@ -28,7 +28,7 @@ public class NumberSettingButton extends ButtonPanel {
 
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		fill(matrices, x, y, x + width + 2, y + height, 0xff2b0075);
+		fill(matrices, x, y, x + width, y + height, 0xff2b0075);
 		textField.y = y+height/2-4;
 		double max = 1;
 		//double min = 1; TODO

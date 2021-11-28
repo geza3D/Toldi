@@ -8,9 +8,13 @@ import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.panels.buttons.BooleanSettingButton;
+import me.geza3d.toldi.gui.panels.buttons.ModeSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.NumberSettingButton;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.settings.Setting;
+import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
+import me.geza3d.toldi.module.settings.Setting.ModeSetting;
 import me.geza3d.toldi.module.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -36,7 +40,11 @@ public class SettingMainPanel extends MainPanel {
 				for(int i = 0; i < prevModule.settings.size(); i++) {
 					Setting<?> setting = prevModule.settings.get(i);
 					if(setting instanceof NumberSetting<?>) {
-						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+18*i, width-6, 16));
+						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+18*i, width-4, 16));
+					} else if(setting instanceof BooleanSetting) {
+						addButton(new BooleanSettingButton((BooleanSetting) setting, this, x+2, y+16+18*i, width-4, 16));
+					} else if(setting instanceof ModeSetting) {
+						addButton(new ModeSettingButton((ModeSetting) setting, this, x+2, y+16+18*i, width-4, 16));
 					}
 				}
 			}

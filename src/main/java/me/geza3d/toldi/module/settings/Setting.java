@@ -28,7 +28,7 @@ public class Setting<T> {
 	
 	public String getName() {
 		try {
-			return new TranslatableText(name).parse(null, null, 0).asString();
+			return new TranslatableText(name).parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}
@@ -37,7 +37,7 @@ public class Setting<T> {
 	
 	public String getDesc() {
 		try {
-			return new TranslatableText(desc).parse(null, null, 0).asString();
+			return new TranslatableText(desc).parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}
@@ -56,20 +56,26 @@ public class Setting<T> {
 
 		String[] modes;
 		
-		public ModeSetting(SettingHolder holder, String name, Integer defaultValue, String[] modes) {
+		public ModeSetting(SettingHolder holder, String name, Integer defaultValue, String... modes) {
 			super(holder, name, defaultValue);
 			for(int i = 0; i < modes.length; i++) {
 				modes[i] = "setting." + Toldi.MODID + "." + name + "." + modes[i].toLowerCase();
 			}
+			this.modes = modes;
 		}
 		
 		public String getMode() {
 			try {
-				return new TranslatableText(modes[value]).parse(null, null, 0).asString();
+				return new TranslatableText(modes[value]).parse(null, null, 0).getString();
 			} catch (CommandSyntaxException e) {
 				e.printStackTrace();
 			}
 			return modes[value];
+		}
+		
+		public void increment() {
+			value++;
+			value %= modes.length;
 		}
 		
 	}

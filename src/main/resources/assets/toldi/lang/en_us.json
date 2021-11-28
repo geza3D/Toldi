@@ -1,3 +1,6 @@
 {
-	"module.toldi.debug.name": "Debug"
+"module.toldi.debug.name": "Debug",
+"setting.toldi.test1.name": "Test1",
+"setting.toldi.test2.name": "Test2",
+"setting.toldi.test3.name": "Test3"
 }
