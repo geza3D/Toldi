@@ -1,5 +1,7 @@
 package me.geza3d.toldi.init;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Map;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
+import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
 
 public class Modules {
@@ -28,6 +31,9 @@ public class Modules {
 	//Exploit
 	public static PortalGodmode PORTALGODMODE;
 	
+	//Movement
+	public static BoatFly BOATFLY;
+	
 	//Player
 	public static Debug DEBUG;
 	
@@ -40,8 +46,17 @@ public class Modules {
 		MODULESBYTYPE.put(EnumModuleType.PLAYER, PLAYER);
 		MODULESBYTYPE.put(EnumModuleType.ALL, ALL);
 		
-		DEBUG = new Debug();
-		PORTALGODMODE = new PortalGodmode();
+		for(Field field : Modules.class.getFields()) {
+			if(ToldiModule.class.isAssignableFrom(field.getType())) {
+				try {
+					field.set(Modules.class, field.getType().getDeclaredConstructor().newInstance());
+				} catch (IllegalArgumentException | IllegalAccessException | InstantiationException
+						| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 	
 	public static ToldiModule getModuleByName(String name) {

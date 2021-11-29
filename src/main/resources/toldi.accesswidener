@@ -1,3 +1,6 @@
 accessWidener	v1	named
 
 accessible   method   net/minecraft/client/font/TextRenderer   getFontStorage   (Lnet/minecraft/util/Identifier;)Lnet/minecraft/client/font/FontStorage;
+mutable   field   net/minecraft/util/math/Vec3d   x   D
+mutable   field   net/minecraft/util/math/Vec3d   y   D
+mutable   field   net/minecraft/util/math/Vec3d   z   D

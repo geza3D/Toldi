@@ -75,14 +75,16 @@ public class ConfigHandler {
 			Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String,Object>>() {}.getType());
 			for(Setting<?> setting : module.settings) {
 				Object o = map.get(setting.getUntranslatedName());
-				if(setting instanceof IntegerSetting) {
-					((IntegerSetting)setting).setValue((int)(double)(Double)o);
-				} else if(setting instanceof DoubleSetting) {
-					((DoubleSetting)setting).setValue((Double)o);
-				} else if(setting instanceof BooleanSetting) {
-					((BooleanSetting)setting).setValue((Boolean)o);
-				} else if(setting instanceof ModeSetting) {
-					((ModeSetting)setting).setValue((int)(double)(Double)o);
+				if(o != null) {
+					if(setting instanceof IntegerSetting && o instanceof Double) {
+						((IntegerSetting)setting).setValue((int)(double)(Double)o);
+					} else if(setting instanceof DoubleSetting && o instanceof Double) {
+						((DoubleSetting)setting).setValue((Double)o);
+					} else if(setting instanceof BooleanSetting && o instanceof Boolean) {
+						((BooleanSetting)setting).setValue((Boolean)o);
+					} else if(setting instanceof ModeSetting && o instanceof Double) {
+						((ModeSetting)setting).setValue((int)(double)(Double)o);
+					}
 				}
 			}
 		}

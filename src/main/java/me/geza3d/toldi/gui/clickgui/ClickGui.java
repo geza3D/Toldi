@@ -7,13 +7,10 @@ import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.CategoryButton;
-import me.geza3d.toldi.gui.panels.buttons.NumberSettingButton;
 import me.geza3d.toldi.gui.panels.mainpanels.ModulesMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.SettingMainPanel;
-import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
-import me.geza3d.toldi.module.settings.NumberSetting.DoubleSetting;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Items;
@@ -42,7 +39,7 @@ public class ClickGui extends Screen {
 		int width = Toldi.CLIENT.getWindow().getScaledWidth()/2;
 		int height = Toldi.CLIENT.getWindow().getScaledHeight()/2;
 		
-		int categX = width-142;
+		int categX = width-200;
 		int categY = height-120;
 		MainPanel categories = new MainPanel(categX, categY, 30, 210);
 		categories.renderBackground = false;
@@ -57,11 +54,11 @@ public class ClickGui extends Screen {
 		
 		panels.add(categories);
 		
-		ModulesMainPanel modules = new ModulesMainPanel(width-112, height-120, 110, 210);
+		ModulesMainPanel modules = new ModulesMainPanel(width-170, height-120, 168, 210);
 		
 		panels.add(modules);
 		
-		SettingMainPanel settings = new SettingMainPanel(width + 2, height - 120, 142, 210);
+		SettingMainPanel settings = new SettingMainPanel(width + 2, height - 120, 198, 210);
 		
 		panels.add(settings);
 	}
