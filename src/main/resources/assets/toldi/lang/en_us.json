@@ -18,5 +18,11 @@
 "setting.toldi.test4.b": "B",
 "setting.toldi.test4.c": "C",
 
-"module.toldi.portalgodmode.name": "PortalGodmode"
+"module.toldi.portalgodmode.name": "PortalGodmode",
+
+"module.toldi.boatfly.name": "BoatFly",
+"setting.toldi.hspeed.name": "HSpeed",
+"setting.toldi.vspeed.name": "VSpeed",
+"setting.toldi.bypass.name": "Bypass",
+"setting.toldi.noclip.name": "NoClip"
 }

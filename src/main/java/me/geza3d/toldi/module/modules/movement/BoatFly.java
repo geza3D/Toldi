@@ -1,6 +1,7 @@
 package me.geza3d.toldi.module.modules.movement;
 
 import me.geza3d.toldi.events.EntityTickCallback;
+import me.geza3d.toldi.events.PacketCallback;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.ToldiModule.Type;
@@ -9,7 +10,10 @@ import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
 import me.geza3d.toldi.util.MathUtil;
 import me.geza3d.toldi.util.Stopper;
 import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
+import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 
 @Type(EnumModuleType.MOVEMENT)
 public class BoatFly extends ToldiModule {
@@ -97,6 +101,18 @@ public class BoatFly extends ToldiModule {
 				} else {
 					entity.getVelocity().x = 0;
 					entity.getVelocity().z = 0;
+				}
+			}
+			return ActionResult.SUCCESS;
+		});
+	}
+	
+	@Listener
+	public void onPacketIn() {
+		PacketCallback.IN.register(packet -> {
+			if(getStatus() && bypass.getValue() && boat != null) {
+				if(packet instanceof VehicleMoveS2CPacket) {
+					getWorld().sendPacket(PlayerInteractEntityC2SPacket.interact(boat, false, Hand.MAIN_HAND));
 				}
 			}
 			return ActionResult.SUCCESS;

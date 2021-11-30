@@ -14,7 +14,7 @@ import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.settings.SettingHolder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.text.LiteralText;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.text.TranslatableText;
 
 public class ToldiModule extends SettingHolder {
@@ -90,7 +90,6 @@ public class ToldiModule extends SettingHolder {
 	
 	public void disable() {
 		if(status) {
-			getPlayer().sendMessage(new LiteralText(getRawName() + " has been disabled."), false);
 			status = false;
 		}
 	}
@@ -137,8 +136,11 @@ public class ToldiModule extends SettingHolder {
 		return MinecraftClient.getInstance();
 	}
 	
-	@SuppressWarnings("resource")
 	protected ClientPlayerEntity getPlayer() {
 		return getMC().player;
+	}
+	
+	protected ClientWorld getWorld() {
+		return getMC().world;
 	}
 }
