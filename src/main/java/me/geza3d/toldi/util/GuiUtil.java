@@ -23,7 +23,7 @@ public class GuiUtil {
 	}
 	
 	public static void drawPolygon(MatrixStack matrices, double startDegree, double endDegree, int corners, int radius, int x, int y, int color) {
-        drawPolygon(matrices.peek().getModel(), startDegree, endDegree, corners, radius, x, y, color);
+        drawPolygon(matrices.peek().getPositionMatrix(), startDegree, endDegree, corners, radius, x, y, color);
     }
 
     private static void drawPolygon(Matrix4f matrix, double startDegree, double endDegree, int corners, int radius, int x, int y, int color) {
