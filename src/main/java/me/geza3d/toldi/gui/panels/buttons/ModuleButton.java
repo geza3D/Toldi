@@ -32,7 +32,7 @@ public class ModuleButton extends ButtonPanel {
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		int rgb = ClickGui.c3;
-		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY)) 
+		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || ClickGui.selectedModule == module) 
 			rgb = ClickGui.c4;
 		DrawableHelper.fill(matrices, x, y, x+width, y+height, rgb);
 		drawCenteredText(matrices, Toldi.TEXTRENDERER, text, x + width/2, y + (height - 10) / 2, module.getRawStatus() ? new Color(0x00ffd9, false).getRGB() : Color.WHITE.getRGB());

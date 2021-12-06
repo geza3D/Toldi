@@ -10,11 +10,13 @@ public class Setting<T> {
 	T value;
 	protected String name;
 	protected String desc;
+	protected SettingHolder holder;
 	
 	public Setting(SettingHolder holder, String name, T defaultValue) {
 		this.name = name;
-		this.desc = "setting." + Toldi.MODID + "." + name + ".description";
+		this.desc = "setting." + Toldi.MODID + "." + holder.getHolderName() + "." + name + ".description";
 		this.value = defaultValue;
+		this.holder = holder;
 		holder.settings.add(this);
 	}
 	
@@ -37,7 +39,7 @@ public class Setting<T> {
 	
 	public String getName() {
 		try {
-			return new TranslatableText("setting." + Toldi.MODID + "." + name + ".name").parse(null, null, 0).getString();
+			return new TranslatableText("setting." + Toldi.MODID + "." + holder.getHolderName() + "." + name + ".name").parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}
@@ -68,7 +70,7 @@ public class Setting<T> {
 		public ModeSetting(SettingHolder holder, String name, Integer defaultValue, String... modes) {
 			super(holder, name, defaultValue);
 			for(int i = 0; i < modes.length; i++) {
-				modes[i] = "setting." + Toldi.MODID + "." + name + "." + modes[i].toLowerCase();
+				modes[i] = "setting." + Toldi.MODID + "." + holder.getHolderName() + "." + name + "." + modes[i].toLowerCase();
 			}
 			this.modes = modes;
 		}

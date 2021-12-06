@@ -1,7 +1,8 @@
 package me.geza3d.toldi.module.modules.movement;
 
-import me.geza3d.toldi.events.EntityTickCallback;
+import me.geza3d.toldi.events.EntityCallback;
 import me.geza3d.toldi.events.PacketCallback;
+import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.ToldiModule.Type;
@@ -10,6 +11,7 @@ import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
 import me.geza3d.toldi.util.MathUtil;
 import me.geza3d.toldi.util.Stopper;
 import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.network.packet.c2s.play.PlayerInputC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.s2c.play.VehicleMoveS2CPacket;
 import net.minecraft.util.ActionResult;
@@ -38,13 +40,13 @@ public class BoatFly extends ToldiModule {
 	
 	@Listener
 	public void onPlayerTick() {
-		EntityTickCallback.TICK.register(entity -> {
+		EntityCallback.TICK.register(entity -> {
 			if(getStatus() && entity == getPlayer()) {
-				if(entity.getVehicle() instanceof BoatEntity && (boat == null || boat != entity.getVehicle())) {
+				if(entity.getVehicle() instanceof BoatEntity && entity.getVehicle().getFirstPassenger() == getPlayer() && (boat == null || boat != entity.getVehicle())) {
 					boat = (BoatEntity) entity.getVehicle();
 					boat.setNoGravity(true);
 					yLevel = boat.getY();
-				} else if(!(entity.getVehicle() instanceof BoatEntity) && boat != null) {
+				} else if((!(entity.getVehicle() instanceof BoatEntity) || entity.getVehicle().getFirstPassenger() != getPlayer()) && boat != null) {
 					boat.setNoGravity(false);
 					boat.noClip = false;
 					boat = null;
@@ -56,11 +58,12 @@ public class BoatFly extends ToldiModule {
 	
 	@Listener
 	public void onBoatTick() {
-		EntityTickCallback.TICK.register(entity -> {
+		EntityCallback.TICK.register(entity -> {
 			if(getStatus() && entity == boat) {
 				entity.setYaw(getPlayer().getHeadYaw());
 				entity.noClip = noclip.getValue();
-				if(getMC().options.keyJump.isPressed()) {
+				if(getMC().options.keyJump.isPressed() &&
+						!Modules.FREECAM.getStatus()) {
 					kickTimer.startStopper();
 					if(kickTimer.checkStopper(3000l, false)) {
 						entity.getVelocity().y = -0.04;
@@ -72,7 +75,8 @@ public class BoatFly extends ToldiModule {
 					yLevel = entity.getY();
 				
 					
-				} else if(getMC().options.keySprint.isPressed()){
+				} else if(getMC().options.keySprint.isPressed() &&
+						!Modules.FREECAM.getStatus()){
 					
 					kickTimer.resetStopper();
 					entity.getVelocity().y = -vspeed.getValue();
@@ -92,10 +96,11 @@ public class BoatFly extends ToldiModule {
 
 				}
 					
-				if(getMC().options.keyForward.isPressed() ||
+				if((getMC().options.keyForward.isPressed() ||
 						getMC().options.keyBack.isPressed() ||
 						getMC().options.keyRight.isPressed() ||
-						getMC().options.keyLeft.isPressed()){
+						getMC().options.keyLeft.isPressed()) &&
+						!Modules.FREECAM.getStatus()){
 					entity.getVelocity().x = MathUtil.calculateX(getPlayer().getYaw(), hspeed.getValue());
 					entity.getVelocity().z = MathUtil.calculateZ(getPlayer().getYaw(), hspeed.getValue());
 				} else {
@@ -113,6 +118,20 @@ public class BoatFly extends ToldiModule {
 			if(getStatus() && bypass.getValue() && boat != null) {
 				if(packet instanceof VehicleMoveS2CPacket) {
 					getWorld().sendPacket(PlayerInteractEntityC2SPacket.interact(boat, false, Hand.MAIN_HAND));
+				}
+			}
+			return ActionResult.SUCCESS;
+		});
+	}
+	
+	@Listener
+	public void onPacketOut() {
+		PacketCallback.IN.register(packet -> {
+			if(getStatus() && boat != null) {
+				if(packet instanceof PlayerInputC2SPacket) {
+					PlayerInputC2SPacket p = (PlayerInputC2SPacket) packet;
+					p.sneaking = false;
+					
 				}
 			}
 			return ActionResult.SUCCESS;

@@ -127,6 +127,11 @@ public class ToldiModule extends SettingHolder {
 		return type;
 	}
 	
+	@Override
+	public String getHolderName() {
+		return name;
+	}
+	
 	public String getUntranslatedName() {
 		return name;
 	}

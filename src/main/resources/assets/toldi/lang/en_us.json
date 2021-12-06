@@ -10,19 +10,22 @@
 
 //Modules
 "module.toldi.debug.name": "Debug",
-"setting.toldi.test1.name": "Test1",
-"setting.toldi.test2.name": "Test2",
-"setting.toldi.test3.name": "Test3",
-"setting.toldi.test4.name": "Test4",
-"setting.toldi.test4.a": "A",
-"setting.toldi.test4.b": "B",
-"setting.toldi.test4.c": "C",
+"setting.toldi.debug.test1.name": "Test1",
+"setting.toldi.debug.test2.name": "Test2",
+"setting.toldi.debug.test3.name": "Test3",
+"setting.toldi.debug.test4.name": "Test4",
+"setting.toldi.debug.test4.a": "A",
+"setting.toldi.debug.test4.b": "B",
+"setting.toldi.debug.test4.c": "C",
 
 "module.toldi.portalgodmode.name": "PortalGodmode",
 
 "module.toldi.boatfly.name": "BoatFly",
-"setting.toldi.hspeed.name": "HSpeed",
-"setting.toldi.vspeed.name": "VSpeed",
-"setting.toldi.bypass.name": "Bypass",
-"setting.toldi.noclip.name": "NoClip"
+"setting.toldi.boatfly.hspeed.name": "HSpeed",
+"setting.toldi.boatfly.vspeed.name": "VSpeed",
+"setting.toldi.boatfly.bypass.name": "Bypass",
+"setting.toldi.boatfly.noclip.name": "NoClip",
+
+"module.toldi.freecam.name": "Freecam",
+"setting.toldi.freecam.speed.name": "Speed"
 }

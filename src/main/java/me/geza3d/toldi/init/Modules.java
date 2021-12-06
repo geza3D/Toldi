@@ -12,6 +12,7 @@ import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
+import me.geza3d.toldi.module.modules.render.Freecam;
 
 public class Modules {
 
@@ -27,6 +28,9 @@ public class Modules {
 	public static final Map<EnumModuleType, List<ToldiModule>> MODULESBYTYPE = new HashMap<>();
 	
 	public static final Map<String, ToldiModule> MODULESBYNAME = new HashMap<>();
+	
+	//Render
+	public static Freecam FREECAM;
 	
 	//Exploit
 	public static PortalGodmode PORTALGODMODE;
