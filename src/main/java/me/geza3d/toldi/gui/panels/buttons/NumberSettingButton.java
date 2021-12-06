@@ -63,7 +63,7 @@ public class NumberSettingButton extends ButtonPanel {
 			} else {
 				textField.setText(String.valueOf(((int)((double)setting.getValue()*100d))/100d));
 			}
-		} else if(!textField.getText().isBlank()){
+		} else if(!textField.getText().isEmpty()){
 			if(setting instanceof IntegerSetting) {
 				((IntegerSetting)setting).setValue((int) Double.parseDouble(textField.getText()));
 			} else {

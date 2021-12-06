@@ -19,7 +19,8 @@ public class GuiUtil {
 
 	public static void glScissors(int x, int y, int width, int height) {
 		Window window = Toldi.CLIENT.getWindow();
-		GL11.glScissor(x * 2, (window.getScaledHeight()-y-height) * 2, width * 2, (height-1) * 2);
+		int scale = Toldi.CLIENT.options.guiScale;
+		GL11.glScissor(x * scale, (window.getScaledHeight()-y-height) * scale, width * scale, (height-1) * scale);
 	}
 	
 	public static void drawPolygon(MatrixStack matrices, double startDegree, double endDegree, int corners, int radius, int x, int y, int color) {

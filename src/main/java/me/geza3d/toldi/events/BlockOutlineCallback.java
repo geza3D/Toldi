@@ -4,18 +4,19 @@ import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.util.ActionResult;
 
-public interface HudCallback {
+public interface BlockOutlineCallback {
 
 	/**
-	 * Cancelling this will spoof the CameraPlayer to be the player and not the camera entity if the camera entity is a player.
+	 * If its cancelled it will make the BlockOutline render regardless if the player is the camera or not.
 	 */
-	public static final Event<HudCallback> CAMERAPLAYER = EventFactory.createArrayBacked(HudCallback.class,
+	public static final Event<BlockOutlineCallback> EVENT = EventFactory.createArrayBacked(BlockOutlineCallback.class,
 			listeners -> () -> {
-				for(HudCallback listener : listeners) {
+				for(BlockOutlineCallback listener : listeners) {
 					ActionResult result = listener.spoof();
 					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});
+	
 	ActionResult spoof();
 }

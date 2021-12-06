@@ -3,7 +3,6 @@ package me.geza3d.toldi.gui.clickgui;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.CategoryButton;
@@ -36,8 +35,8 @@ public class ClickGui extends Screen {
 	@Override
 	protected void init() {
 		panels.clear();
-		int width = Toldi.CLIENT.getWindow().getScaledWidth()/2;
-		int height = Toldi.CLIENT.getWindow().getScaledHeight()/2;
+		int width = this.width / 2;
+		int height = this.height / 2;
 		
 		int categX = width-200;
 		int categY = height-120;

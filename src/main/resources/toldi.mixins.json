@@ -12,7 +12,8 @@
     "ServerPlayerEntityMixin",
     "WorldRendererMixin",
     "InGameHudMixin",
-    "ClientEntityHandlerMixin"
+    "ClientEntityHandlerMixin",
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

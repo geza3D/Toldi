@@ -1,5 +1,6 @@
 package me.geza3d.toldi.module.modules.render;
 
+import me.geza3d.toldi.events.BlockOutlineCallback;
 import me.geza3d.toldi.events.EntityCallback;
 import me.geza3d.toldi.events.EntityChangeLookDirectionCallback;
 import me.geza3d.toldi.events.HudCallback;
@@ -142,6 +143,16 @@ public class Freecam extends ToldiModule{
 	@Listener
 	public void onGetCameraPlayer() {
 		HudCallback.CAMERAPLAYER.register(()-> {
+			if(getStatus()) {
+				return ActionResult.FAIL;
+			}
+			return ActionResult.SUCCESS;
+		});
+	}
+	
+	@Listener
+	public void onBlockOutline() {
+		BlockOutlineCallback.EVENT.register(() -> {
 			if(getStatus()) {
 				return ActionResult.FAIL;
 			}
