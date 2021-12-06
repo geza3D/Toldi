@@ -126,7 +126,7 @@ public class BoatFly extends ToldiModule {
 	
 	@Listener
 	public void onPacketOut() {
-		PacketCallback.IN.register(packet -> {
+		PacketCallback.OUT.register(packet -> {
 			if(getStatus() && boat != null) {
 				if(packet instanceof PlayerInputC2SPacket) {
 					PlayerInputC2SPacket p = (PlayerInputC2SPacket) packet;
