@@ -31,9 +31,11 @@ public class BoatFly extends ToldiModule {
 	
 	@Override
 	public void disable() {
-		boat.setNoGravity(false);
-		boat.noClip = false;
-		boat = null;
+		if(boat != null) {
+			boat.setNoGravity(false);
+			boat.noClip = false;
+			boat = null;
+		}
 		kickTimer.resetStopper();
 		super.disable();
 	}

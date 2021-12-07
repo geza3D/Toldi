@@ -1,8 +1,12 @@
 package me.geza3d.toldi.module.settings;
 
+import org.lwjgl.glfw.GLFW;
+
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import me.geza3d.toldi.Toldi;
+import me.geza3d.toldi.keybind.ModuleKeyBind;
+import me.geza3d.toldi.module.ToldiModule;
 import net.minecraft.text.TranslatableText;
 
 public class Setting<T> {
@@ -94,5 +98,51 @@ public class Setting<T> {
 			if(value < 0) value = modes.length - 1;
 		}
 		
+	}
+	
+	public static class KeyBindSetting extends Setting<Integer> {
+
+		ModuleKeyBind bind;
+		
+		public KeyBindSetting(ToldiModule module, String name, Integer defaultValue) {
+			super(module, name, defaultValue);
+			bind = new ModuleKeyBind(module);
+			setValue(defaultValue);
+		}
+		
+		public void setMode(int mode) {
+			value = getValue() | mode << 12;
+			bind.changeMode(mode);
+		}
+		
+		@Override
+		public void setValue(Integer value) {
+			if(value == -1) value = 0;
+			if(this.value == -1) this.value = 0;
+			this.value = this.value & 0xF000 | value;
+			bind.changeKey(value);
+		}
+		
+		@Override
+		public Integer getValue() {
+			int n = super.getValue() & 0x0FFF;
+			if(n == 0) {
+				return GLFW.GLFW_KEY_UNKNOWN;
+			}
+			return n;
+		}
+		
+		public int getMode() {
+			System.out.println(Integer.toHexString(value));
+			return value >> 12;
+		}
+		
+		public void incrementMode() {
+			int mode = getMode();
+			mode++;
+			mode %= 2;
+			System.out.println(mode + ", " + getMode() + ", " + Integer.toHexString(value));
+			setMode(mode);
+		}
 	}
 }

@@ -8,6 +8,11 @@
 "type.toldi.player": "Player",
 "type.toldi.all": "All",
 
+//KeyBinds
+"setting.keybind.key" : "Key",
+"setting.keybind.mode.press" : "Press",
+"setting.keybind.mode.hold" : "Hold",
+
 //Modules
 "module.toldi.debug.name": "Debug",
 "setting.toldi.debug.test1.name": "Test1",

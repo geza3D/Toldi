@@ -37,14 +37,18 @@ public class SettingMainPanel extends MainPanel {
 			desiredScrollOffset = 0;
 			buttons.clear();
 			if(prevModule != null) {
+				int buttons = -1;
 				for(int i = 0; i < prevModule.settings.size(); i++) {
 					Setting<?> setting = prevModule.settings.get(i);
 					if(setting instanceof NumberSetting<?>) {
-						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+18*i, width-4, 16));
+						buttons++;
+						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+18*buttons, width-4, 16));
 					} else if(setting instanceof BooleanSetting) {
-						addButton(new BooleanSettingButton((BooleanSetting) setting, this, x+2, y+16+18*i, width-4, 16));
+						buttons++;
+						addButton(new BooleanSettingButton((BooleanSetting) setting, this, x+2, y+16+18*buttons, width-4, 16));
 					} else if(setting instanceof ModeSetting) {
-						addButton(new ModeSettingButton((ModeSetting) setting, this, x+2, y+16+18*i, width-4, 16));
+						buttons++;
+						addButton(new ModeSettingButton((ModeSetting) setting, this, x+2, y+16+18*buttons, width-4, 16));
 					}
 				}
 			}

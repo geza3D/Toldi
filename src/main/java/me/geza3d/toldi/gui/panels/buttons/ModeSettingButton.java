@@ -20,9 +20,9 @@ public class ModeSettingButton extends ButtonPanel {
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		fill(matrices, x, y, x + width, y + height, ClickGui.c5);
-		fill(matrices, x + width - Toldi.TEXTRENDERER.getWidth("<" + text + ">"), y + height / 2 - 5, x + width, y + height / 2 + 6, ClickGui.c6);
+		fill(matrices, x + width - Toldi.TEXTRENDERER.getWidth("<" + text + ">")-5, y + height / 2 - 5, x + width-5, y + height / 2 + 6, ClickGui.c6);
 		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(setting.getName()), x, y + height / 2 - 4, 0xffffffff);
-		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText("<" + text + ">"), x + width - Toldi.TEXTRENDERER.getWidth("<" + text + ">"), y + height / 2 - 4, 0xffffffff);
+		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText("<" + text + ">"), x + width - Toldi.TEXTRENDERER.getWidth("<" + text + ">") - 5, y + height / 2 - 4, 0xffffffff);
 	}
 	
 	@Override

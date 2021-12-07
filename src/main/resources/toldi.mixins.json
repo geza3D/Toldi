@@ -13,7 +13,8 @@
     "WorldRendererMixin",
     "InGameHudMixin",
     "ClientEntityHandlerMixin",
-    "GameRendererMixin"
+    "GameRendererMixin",
+    "KeyboardMixin"
   ],
   "injectors": {
     "defaultRequire": 1

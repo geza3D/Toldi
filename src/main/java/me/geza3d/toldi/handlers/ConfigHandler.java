@@ -21,6 +21,7 @@ import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.settings.Setting;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
+import me.geza3d.toldi.module.settings.Setting.KeyBindSetting;
 import me.geza3d.toldi.module.settings.Setting.ModeSetting;
 import me.geza3d.toldi.module.settings.NumberSetting.DoubleSetting;
 import me.geza3d.toldi.module.settings.NumberSetting.IntegerSetting;
@@ -84,6 +85,8 @@ public class ConfigHandler {
 						((BooleanSetting)setting).setValue((Boolean)o);
 					} else if(setting instanceof ModeSetting && o instanceof Double) {
 						((ModeSetting)setting).setValue((int)(double)(Double)o);
+					} else if(setting instanceof KeyBindSetting && o instanceof Double) {
+						((KeyBindSetting)setting).setValue((int)(double)(Double)o);
 					}
 				}
 			}

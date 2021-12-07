@@ -6,6 +6,7 @@ import java.util.List;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.CategoryButton;
+import me.geza3d.toldi.gui.panels.mainpanels.KeyBindMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.ModulesMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.SettingMainPanel;
 import me.geza3d.toldi.module.EnumModuleType;
@@ -20,13 +21,26 @@ public class ClickGui extends Screen {
 	List<Panel> panels = new ArrayList<>();
 	public static EnumModuleType selectedType = EnumModuleType.RENDER;
 	public static ToldiModule selectedModule = null;
-	public static int c1 = 0xff384266; //Main
-	public static int c2 = 0xff4a5785; //Secondary
-	public static int c3 = 0xff2c3659; //Button
-	public static int c4 = 0xff6882de; //Button Hovered
-	public static int c5 = 0xff45507a; //Setting Main
-	public static int c6 = 0xff272d45; //Setting Secondary
-	public static int c7 = 0xff33a0ff; //Setting elements
+	/**Main*/
+	public static int c1 = 0xff384266;
+	
+	/**Secondary*/
+	public static int c2 = 0xff4a5785;
+	
+	/**Button*/
+	public static int c3 = 0xff2c3659;
+	
+	/**Button Hovered*/
+	public static int c4 = 0xff6882de;
+	
+	/**Setting Main*/
+	public static int c5 = 0xff45507a;
+	
+	/**Setting Secondary*/
+	public static int c6 = 0xff272d45;
+	
+	/**Setting elements*/
+	public static int c7 = 0xff33a0ff;
 	
 	public ClickGui() {
 		super(Text.of("clickgui"));
@@ -57,9 +71,13 @@ public class ClickGui extends Screen {
 		
 		panels.add(modules);
 		
-		SettingMainPanel settings = new SettingMainPanel(width + 2, height - 120, 198, 210);
+		SettingMainPanel settings = new SettingMainPanel(width + 2, height - 120, 198, 191);
 		
 		panels.add(settings);
+		
+		KeyBindMainPanel keybind = new KeyBindMainPanel(width + 2, height + 70, 198, 20);
+		
+		panels.add(keybind);
 	}
 	
 	@Override

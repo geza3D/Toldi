@@ -64,7 +64,7 @@ public class Freecam extends ToldiModule{
 	@Listener
 	public void onEntityTick() {
 		EntityCallback.TICK.register(entity -> {
-			if(getStatus() && entity == cam) {
+			if(getStatus() && entity == cam && cam.age > 1) {
 				if(getMC().options.keyJump.isPressed()) {
 					
 					cam.getVelocity().y = speed.getValue();

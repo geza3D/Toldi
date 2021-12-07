@@ -12,6 +12,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.settings.SettingHolder;
+import me.geza3d.toldi.module.settings.Setting.KeyBindSetting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
@@ -24,6 +25,8 @@ public class ToldiModule extends SettingHolder {
 	public String info = "";
 	protected String desc;
 	protected boolean status = false;
+	
+	public KeyBindSetting keybindSetting = new KeyBindSetting(this, "keybind", -1);
 	
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
