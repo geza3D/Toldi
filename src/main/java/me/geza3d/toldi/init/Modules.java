@@ -13,6 +13,7 @@ import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
 import me.geza3d.toldi.module.modules.render.Freecam;
+import me.geza3d.toldi.module.modules.render.Fullbright;
 
 public class Modules {
 
@@ -31,6 +32,7 @@ public class Modules {
 	
 	//Render
 	public static Freecam FREECAM;
+	public static Fullbright FULLBRIGHT;
 	
 	//Exploit
 	public static PortalGodmode PORTALGODMODE;

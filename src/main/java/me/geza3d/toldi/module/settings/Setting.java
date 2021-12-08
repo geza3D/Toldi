@@ -133,7 +133,6 @@ public class Setting<T> {
 		}
 		
 		public int getMode() {
-			System.out.println(Integer.toHexString(value));
 			return value >> 12;
 		}
 		
@@ -141,7 +140,6 @@ public class Setting<T> {
 			int mode = getMode();
 			mode++;
 			mode %= 2;
-			System.out.println(mode + ", " + getMode() + ", " + Integer.toHexString(value));
 			setMode(mode);
 		}
 	}

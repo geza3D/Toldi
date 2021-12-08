@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.events.HudCallback;
+import me.geza3d.toldi.events.CameraSpoofCallback;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
@@ -16,7 +16,7 @@ public class InGameHudMixin {
 
 	@Inject(method = "getCameraPlayer", at = @At("HEAD"), cancellable = true)
 	private void onGetCameraPlayer(CallbackInfoReturnable<PlayerEntity> info) {
-		ActionResult result = HudCallback.CAMERAPLAYER.invoker().spoof();
+		ActionResult result = CameraSpoofCallback.CAMERAPLAYER.invoker().spoof();
 		
 		if(result == ActionResult.FAIL) {
 			info.setReturnValue(Toldi.CLIENT.player);

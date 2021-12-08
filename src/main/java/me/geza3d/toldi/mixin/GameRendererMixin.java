@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.events.BlockOutlineCallback;
+import me.geza3d.toldi.events.CameraSpoofCallback;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ActionResult;
@@ -15,7 +15,7 @@ public class GameRendererMixin {
 
 	@ModifyVariable(method = "shouldRenderBlockOutline", at = @At(value = "STORE", ordinal = 0))
 	public Entity onBlockOutline(Entity entity) {
-		if(BlockOutlineCallback.EVENT.invoker().spoof() == ActionResult.FAIL) {
+		if(CameraSpoofCallback.EVENT.invoker().spoof() == ActionResult.FAIL) {
 			return Toldi.CLIENT.player;
 		}
 		return entity;

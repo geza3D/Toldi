@@ -14,7 +14,8 @@
     "InGameHudMixin",
     "ClientEntityHandlerMixin",
     "GameRendererMixin",
-    "KeyboardMixin"
+    "KeyboardMixin",
+    "LightmapTextureManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

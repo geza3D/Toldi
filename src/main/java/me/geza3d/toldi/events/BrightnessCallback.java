@@ -4,19 +4,19 @@ import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.util.ActionResult;
 
-public interface BlockOutlineCallback {
+public interface BrightnessCallback {
 
 	/**
-	 * If its cancelled it will make the BlockOutline render regardless if the player is the camera or not.
+	 * Cancelling this will make the brightness 1000f, without changing its actual value.
 	 */
-	public static final Event<BlockOutlineCallback> EVENT = EventFactory.createArrayBacked(BlockOutlineCallback.class,
+	Event<BrightnessCallback> EVENT = EventFactory.createArrayBacked(BrightnessCallback.class,
 			listeners -> () -> {
-				for(BlockOutlineCallback listener : listeners) {
+				for(BrightnessCallback listener : listeners) {
 					ActionResult result = listener.spoof();
 					if(result == ActionResult.FAIL) return result;
 				}
 				return ActionResult.SUCCESS;
 			});
-	
+
 	ActionResult spoof();
 }
