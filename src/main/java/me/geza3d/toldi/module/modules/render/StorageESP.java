@@ -4,20 +4,13 @@ import static com.mojang.blaze3d.systems.RenderSystem.*;
 
 import org.lwjgl.opengl.GL11;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-
 import me.geza3d.toldi.events.RenderCallback;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
-import net.minecraft.client.RunArgs.Game;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexFormat;
-import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.client.render.VertexFormat.DrawMode;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.ActionResult;

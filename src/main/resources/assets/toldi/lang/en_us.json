@@ -32,5 +32,12 @@
 "setting.toldi.boatfly.noclip.name": "NoClip",
 
 "module.toldi.freecam.name": "Freecam",
-"setting.toldi.freecam.speed.name": "Speed"
+"setting.toldi.freecam.speed.name": "Speed",
+
+"module.toldi.timer.name": "Timer",
+"setting.toldi.timer.speed.name": "Speed",
+
+"module.toldi.fullbright.name": "Fullbright",
+
+"module.toldi.storageesp.name": "StorageESP"
 }
