@@ -14,6 +14,8 @@ import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
 import me.geza3d.toldi.module.modules.render.Freecam;
 import me.geza3d.toldi.module.modules.render.Fullbright;
+import me.geza3d.toldi.module.modules.render.StorageESP;
+import me.geza3d.toldi.module.modules.world.Timer;
 
 public class Modules {
 
@@ -33,6 +35,7 @@ public class Modules {
 	//Render
 	public static Freecam FREECAM;
 	public static Fullbright FULLBRIGHT;
+	public static StorageESP STORAGEESP;
 	
 	//Exploit
 	public static PortalGodmode PORTALGODMODE;
@@ -42,6 +45,9 @@ public class Modules {
 	
 	//Player
 	public static Debug DEBUG;
+	
+	//World
+	public static Timer TIMER;
 	
 	public static void registerModules() {
 		MODULESBYTYPE.put(EnumModuleType.RENDER, RENDER);
