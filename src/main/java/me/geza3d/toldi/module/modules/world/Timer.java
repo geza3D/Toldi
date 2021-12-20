@@ -19,7 +19,9 @@ public class Timer extends ToldiModule{
 	@Listener
 	public void onTick() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			client.renderTickCounter.tickTime = (float) (50f / speed.getValue());
+			if(getStatus()) {
+				client.renderTickCounter.tickTime = (float) (50f / speed.getValue());
+			}
 		});
 	}
 }
