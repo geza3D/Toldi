@@ -1,5 +1,7 @@
 package me.geza3d.toldi.module.settings;
 
+import java.awt.Color;
+
 import org.lwjgl.glfw.GLFW;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -141,6 +143,45 @@ public class Setting<T> {
 			mode++;
 			mode %= 2;
 			setMode(mode);
+		}
+	}
+	
+	public static class ColorSetting extends Setting<Integer> {
+
+		public ColorSetting(SettingHolder holder, String name, Integer defaultValue) {
+			super(holder, name, defaultValue);
+		}
+		
+		public int getAlpha() {
+			return (value >> 24) & 0xFF;
+		}
+		
+		public void setAlpha(int a) {
+			value = new Color(getRed(), getGreen(), getBlue(), a).getRGB();
+		}
+		
+		public int getRed() {
+			return (value >> 16) & 0xFF;
+		}
+		
+		public void setRed(int r) {
+			value = new Color(r, getGreen(), getBlue(), getAlpha()).getRGB();
+		}
+		
+		public int getGreen() {
+			return (value >> 8) & 0xFF;
+		}
+		
+		public void setGreen(int g) {
+			value = new Color(getRed(), g, getBlue(), getAlpha()).getRGB();
+		}
+		
+		public int getBlue() {
+			return (value >> 0) & 0xFF;
+		}
+		
+		public void setBlue(int b) {
+			value = new Color(getRed(), getGreen(), b, getAlpha()).getRGB();
 		}
 	}
 }

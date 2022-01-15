@@ -1,10 +1,13 @@
 package me.geza3d.toldi.util;
 
+import java.awt.Color;
+
 import org.lwjgl.opengl.GL11;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import me.geza3d.toldi.Toldi;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
@@ -15,7 +18,7 @@ import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Matrix4f;
 
-public class GuiUtil {
+public class GuiUtil extends DrawableHelper{
 
 	public static void glScissors(int x, int y, int width, int height) {
 		Window window = Toldi.CLIENT.getWindow();
@@ -48,6 +51,100 @@ public class GuiUtil {
         BufferRenderer.draw(bufferBuilder);
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
+    }
+    
+    public static void drawColorCircle(MatrixStack matrix, int radius, int x, int y) {
+    	drawColorCircle(matrix.peek().getPositionMatrix(), radius, x, y);
+    }
+    
+    private static void drawColorCircle(Matrix4f matrix, int radius, int x, int y) {
+    	x += radius;
+    	y += radius;
+        BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
+        RenderSystem.enableBlend();
+        RenderSystem.disableTexture();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        bufferBuilder.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR);
+        bufferBuilder.vertex(x, y, 0f).color(1f, 1f, 1f, 1f).next();
+        Color c = new Color(255,0,0,255);
+        for(double i = 360; i > -1; i -= 1) {
+        	int color = c.getRGB();
+        	float[] hsb = {0,0,0};
+        	hsb = Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), hsb);
+        	hsb[0] = (float) i / 360f;
+        	c = Color.getHSBColor(hsb[0], hsb[1], hsb[2]);
+        	float a = (float)(color >> 24 & 0xFF) / 255.0f;
+            float r = (float)(color >> 16 & 0xFF) / 255.0f;
+            float g = (float)(color >> 8 & 0xFF) / 255.0f;
+            float b = (float)(color & 0xFF) / 255.0f;
+        	bufferBuilder.vertex(x-Math.cos(Math.toRadians(i))*radius, y-Math.sin(Math.toRadians(i))*radius, 0.0D).color(r, g, b, a).next();
+        }
+        bufferBuilder.end();
+        BufferRenderer.draw(bufferBuilder);
+        RenderSystem.enableTexture();
+        RenderSystem.disableBlend();
+    }
+    
+    public static void fillHGradient(MatrixStack matrix, int x, int y, int w, int h, int c1, int c2) {
+    	fillHGradient(matrix.peek().getPositionMatrix(), x, y, w, h, c1, c2);
+    }
+    
+    private static void fillHGradient(Matrix4f matrix, int x, int y, int w, int h, int c1, int c2) {
+        BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
+        RenderSystem.enableBlend();
+        RenderSystem.disableTexture();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        float a1 = (float)(c1 >> 24 & 0xFF) / 255.0f;
+        float r1 = (float)(c1 >> 16 & 0xFF) / 255.0f;
+        float g1 = (float)(c1 >> 8 & 0xFF) / 255.0f;
+        float b1 = (float)(c1 & 0xFF) / 255.0f;
+        float a2 = (float)(c2 >> 24 & 0xFF) / 255.0f;
+        float r2 = (float)(c2 >> 16 & 0xFF) / 255.0f;
+        float g2 = (float)(c2 >> 8 & 0xFF) / 255.0f;
+        float b2 = (float)(c2 & 0xFF) / 255.0f;
+        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
+        bufferBuilder.vertex(x+w, y, 0f).color(r2, g2, b2, a2).next();
+        bufferBuilder.vertex(x, y, 0f).color(r1, g1, b1, a1).next();
+        bufferBuilder.vertex(x, y+h, 0f).color(r1, g1, b1, a1).next();
+        bufferBuilder.vertex(x+w, y+h, 0f).color(r2, g2, b2, a2).next();
+        bufferBuilder.end();
+        BufferRenderer.draw(bufferBuilder);
+        RenderSystem.enableTexture();
+        RenderSystem.disableBlend();
+    }
+    
+    public static void drawRowBasedCheckerBoard(MatrixStack matrix, int rows, int x, int y, int w, int h, int c1, int c2) {
+    	GL11.glEnable(GL11.GL_SCISSOR_TEST);
+		GuiUtil.glScissors(x, y-1, w, h+1);
+    	int cellsize = h / rows;
+    	if(cellsize < 1) {
+    		cellsize = 1;
+    	}
+    	boolean s1 = true;
+    	boolean s2 = true;
+    	int color = c1;
+    	for(int i = 0; i < h; i += cellsize) {
+    		for(int j = 0; j < w; j += cellsize) {
+    			fill(matrix, x+j, y+i, x+j+cellsize, y+i+cellsize, color);
+    			if(s1) {
+    				color = c2;
+    			} else {
+    				color = c1;
+    			}
+    			s1 = !s1;
+    		}
+       		if(s2) {
+       			color = c2;
+       			s1 = false;
+       		} else {
+       			color = c1;
+       			s1 = true;
+       		}
+       		s2 = !s2;
+    	}
+    	GL11.glDisable(GL11.GL_SCISSOR_TEST);
     }
     /*
     public static void drawPolygonOutline(double startDegree, double endDegree, int corners, int x, int y, int radius, float width, int color) {

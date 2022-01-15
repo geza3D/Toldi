@@ -9,11 +9,13 @@ import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.buttons.BooleanSettingButton;
+import me.geza3d.toldi.gui.panels.buttons.ColorButton.ColorSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.ModeSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.NumberSettingButton;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.settings.Setting;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
+import me.geza3d.toldi.module.settings.Setting.ColorSetting;
 import me.geza3d.toldi.module.settings.Setting.ModeSetting;
 import me.geza3d.toldi.module.settings.NumberSetting;
 import net.minecraft.client.gui.DrawableHelper;
@@ -37,18 +39,21 @@ public class SettingMainPanel extends MainPanel {
 			desiredScrollOffset = 0;
 			buttons.clear();
 			if(prevModule != null) {
-				int buttons = -1;
+				int height = 0;
 				for(int i = 0; i < prevModule.settings.size(); i++) {
 					Setting<?> setting = prevModule.settings.get(i);
 					if(setting instanceof NumberSetting<?>) {
-						buttons++;
-						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+18*buttons, width-4, 16));
+						addButton(new NumberSettingButton((NumberSetting<?>) setting, this, x+2, y+16+height, width-4, 18));
+						height += 19;
 					} else if(setting instanceof BooleanSetting) {
-						buttons++;
-						addButton(new BooleanSettingButton((BooleanSetting) setting, this, x+2, y+16+18*buttons, width-4, 16));
+						addButton(new BooleanSettingButton((BooleanSetting) setting, this, x+2, y+16+height, width-4, 16));
+						height += 17;
 					} else if(setting instanceof ModeSetting) {
-						buttons++;
-						addButton(new ModeSettingButton((ModeSetting) setting, this, x+2, y+16+18*buttons, width-4, 16));
+						addButton(new ModeSettingButton((ModeSetting) setting, this, x+2, y+16+height, width-4, 16));
+						height += 17;
+					} else if(setting instanceof ColorSetting) {
+						addButton(new ColorSettingButton((ColorSetting) setting, this, x+2, y+16+height, width-4, 74));
+						height += 75;
 					}
 				}
 			}

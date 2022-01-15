@@ -23,7 +23,6 @@ public class KeyBindModeButton extends ButtonPanel {
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, ClickGui.c1);
 		String text = "";
-		System.out.println(module.keybindSetting.getMode());
 		if(module.keybindSetting.getMode() == 0) {
 			text = "press";
 		} else {
