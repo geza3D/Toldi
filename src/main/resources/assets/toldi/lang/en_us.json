@@ -6,6 +6,7 @@
 "type.toldi.combat.name": "Combat",
 "type.toldi.world.name": "World",
 "type.toldi.player.name": "Player",
+"type.toldi.hud.name": "Hud",
 "type.toldi.all.name": "All",
 
 "type.toldi.render.desc": "Render: Modules that make you see the world differently.",
@@ -70,6 +71,11 @@
 "setting.toldi.storageesp.dynamiccolor.name": "DynamicColor",
 "setting.toldi.storageesp.dynamiccolor.desc": "Makes blocks have their own colors.",
 "setting.toldi.storageesp.color.name": "Color",
-"setting.toldi.storageesp.color.desc": "If DynamicColor is disabled, the color of the ESP."
+"setting.toldi.storageesp.color.desc": "If DynamicColor is disabled, the color of the ESP.",
+
+"module.toldi.activemodules.name": "ActiveModules",
+"module.toldi.activemodules.desc": "Displays the active modules.",
+"setting.toldi.activemodules.color.name": "Color",
+"setting.toldi.activemodules.color.desc": "The color."
 
 }

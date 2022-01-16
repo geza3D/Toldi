@@ -1,7 +1,7 @@
 package me.geza3d.toldi.gui.panels.mainpanels;
 
-import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.KeyBindButton;
 import me.geza3d.toldi.gui.panels.buttons.KeyBindModeButton;
 import me.geza3d.toldi.gui.windows.GuiValues;
@@ -30,7 +30,7 @@ public class KeyBindMainPanel extends MainPanel {
 				addButton(new KeyBindModeButton(prevModule, this, x + 130, y + height - 18, width - 135, 16));
 			}
 		}
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}	
 	}

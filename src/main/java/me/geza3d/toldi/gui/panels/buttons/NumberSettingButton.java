@@ -78,9 +78,9 @@ public class NumberSettingButton extends ButtonPanel {
 	}
 	
 	@Override
-	public void click(int mouseX, int mouseY) {
+	public boolean click(int mouseX, int mouseY) {
 		textField.mouseClicked(mouseX, mouseY, 0);
-		super.click(mouseX, mouseY);
+		return super.click(mouseX, mouseY);
 	}
 	
 	@Override

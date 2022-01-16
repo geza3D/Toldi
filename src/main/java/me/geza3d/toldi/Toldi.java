@@ -3,6 +3,7 @@ package me.geza3d.toldi;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import me.geza3d.toldi.handlers.ConfigHandler;
+import me.geza3d.toldi.handlers.HudHandler;
 import me.geza3d.toldi.handlers.KeyBindHandler;
 import me.geza3d.toldi.init.Modules;
 import net.fabricmc.api.ModInitializer;
@@ -27,6 +28,7 @@ public class Toldi implements ModInitializer {
 		Modules.registerModules();
 		ConfigHandler.initConfigHandler();
 		KeyBindHandler.registerKeyBinds();
+		HudHandler.initHudHandler();
 	}
 
 }

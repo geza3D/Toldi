@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.events.JoinLeaveCallback;
 import me.geza3d.toldi.init.Modules;
+import me.geza3d.toldi.module.ToldiHudModule;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.settings.Setting;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
@@ -90,6 +91,16 @@ public class ConfigHandler {
 					}
 				}
 			}
+			if(module instanceof ToldiHudModule) {
+				Double x = (Double) map.get("panelxpercentage");
+				Double y = (Double) map.get("panelypercentage");
+				if(x != null) {
+					((ToldiHudModule) module).getPanel().setXPercentage((float)(double)x);
+				}
+				if(y != null) {
+					((ToldiHudModule) module).getPanel().setYPercentage((float)(double)y);
+				}
+			}
 		}
 	}
 	
@@ -99,6 +110,10 @@ public class ConfigHandler {
 			Map<String, Object> map = new HashMap<>();
 			for(Setting<?> setting : module.settings) {
 				map.put(setting.getUntranslatedName(), setting.getValue());
+			}
+			if(module instanceof ToldiHudModule) {
+				map.put("panelxpercentage", ((ToldiHudModule) module).getPanel().getXPercentage());
+				map.put("panelypercentage", ((ToldiHudModule) module).getPanel().getYPercentage());
 			}
 			String settings = gson.toJson(map);
 			writeIntoFile(DIR+currentProfile+"\\"+module.getType().getTypeName(), module.getUntranslatedName() + ".json", settings);

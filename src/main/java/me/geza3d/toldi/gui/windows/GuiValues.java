@@ -1,6 +1,7 @@
 package me.geza3d.toldi.gui.windows;
 
 import me.geza3d.toldi.gui.panels.Panel;
+import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 
 public class GuiValues {
@@ -21,6 +22,8 @@ public class GuiValues {
 	public static int c6 = 0xff272d45;
 	/**Setting elements*/
 	public static int c7 = 0xff33a0ff;
+	public static EnumModuleType selectedType = EnumModuleType.RENDER;
+	public static boolean movingHudPanel = false;
 
 	
 }

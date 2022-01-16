@@ -5,8 +5,8 @@ import java.awt.Color;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.BooleanSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.ColorButton.ColorSettingButton;
 import me.geza3d.toldi.gui.windows.GuiValues;
@@ -58,7 +58,7 @@ public class SettingMainPanel extends MainPanel {
 				}
 			}
 		}
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}
 		fill(matrices, x, y, x+width, y+14, GuiValues.c2);

@@ -39,13 +39,15 @@ public class Panel extends DrawableHelper implements Drawable{
 		return null;
 	}
 	
-	protected void onClick(int mouseX, int mouseY) {	
+	protected void onClick(int mouseX, int mouseY) {
 	}
 	
-	public void click(int mouseX, int mouseY) {
+	public boolean click(int mouseX, int mouseY) {
 		if(isMouseOver(mouseX, mouseY) && visible) {
 			onClick(mouseX, mouseY);
+			return true;
 		}
+		return false;
 	}
 	
 	protected void onRightClick(int mouseX, int mouseY) {	

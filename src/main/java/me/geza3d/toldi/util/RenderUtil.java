@@ -29,6 +29,16 @@ public class RenderUtil extends DrawableHelper{
 		GL11.glScissor(x * scale, (window.getScaledHeight()-y-height) * scale, width * scale, (height-1) * scale);
 	}
 	
+	public static int getWindowWidth() {
+		Window window = Toldi.CLIENT.getWindow();
+		return window.getScaledWidth();
+	}
+	
+	public static int getWindowHeight() {
+		Window window = Toldi.CLIENT.getWindow();
+		return window.getScaledHeight();
+	}
+	
 	public static void drawPolygon(MatrixStack matrices, double startDegree, double endDegree, int corners, int radius, int x, int y, int color) {
         drawPolygon(matrices.peek().getPositionMatrix(), startDegree, endDegree, corners, radius, x, y, color);
     }

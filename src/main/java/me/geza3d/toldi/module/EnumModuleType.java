@@ -47,6 +47,12 @@ public enum EnumModuleType implements IModuleType{
 		public String getTypeName() {
 			return "all";
 		}
+	},
+	HUD {
+		@Override
+		public String getTypeName() {
+			return "hud";
+		}
 	};
 	
 	private static final String PREFIX = "type." + Toldi.MODID + ".";

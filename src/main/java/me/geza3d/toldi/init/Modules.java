@@ -10,6 +10,7 @@ import java.util.Map;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
 import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
+import me.geza3d.toldi.module.modules.hud.ActiveModules;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
 import me.geza3d.toldi.module.modules.render.Freecam;
@@ -25,8 +26,11 @@ public class Modules {
 	public static final List<ToldiModule> COMBAT = new ArrayList<>();
 	public static final List<ToldiModule> WORLD = new ArrayList<>();
 	public static final List<ToldiModule> PLAYER = new ArrayList<>();
+	public static final List<ToldiModule> HUD = new ArrayList<>();
 	
 	public static final List<ToldiModule> ALL = new ArrayList<>();
+	
+	public static final List<ToldiModule> ACTIVE = new ArrayList<>();
 	
 	public static final Map<EnumModuleType, List<ToldiModule>> MODULESBYTYPE = new HashMap<>();
 	
@@ -49,6 +53,9 @@ public class Modules {
 	//World
 	public static Timer TIMER;
 	
+	//Hud
+	public static ActiveModules ACTIVEMODULES;
+	
 	public static void registerModules() {
 		MODULESBYTYPE.put(EnumModuleType.RENDER, RENDER);
 		MODULESBYTYPE.put(EnumModuleType.EXPLOIT, EXPLOIT);
@@ -56,6 +63,7 @@ public class Modules {
 		MODULESBYTYPE.put(EnumModuleType.COMBAT, COMBAT);
 		MODULESBYTYPE.put(EnumModuleType.WORLD, WORLD);
 		MODULESBYTYPE.put(EnumModuleType.PLAYER, PLAYER);
+		MODULESBYTYPE.put(EnumModuleType.HUD, HUD);
 		MODULESBYTYPE.put(EnumModuleType.ALL, ALL);
 		
 		for(Field field : Modules.class.getFields()) {

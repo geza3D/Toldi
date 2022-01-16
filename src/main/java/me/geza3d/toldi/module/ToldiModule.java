@@ -77,6 +77,9 @@ public class ToldiModule extends SettingHolder {
 		case PLAYER:
 			Modules.PLAYER.add(this);
 			break;
+		case HUD:
+			Modules.HUD.add(this);
+			break;
 		}
 		Modules.ALL.add(this);
 		Modules.MODULESBYNAME.put(name, this);
@@ -85,12 +88,14 @@ public class ToldiModule extends SettingHolder {
 	
 	public void enable() {
 		if(!status) {
+			Modules.ACTIVE.add(this);
 			status = true;
 		}
 	}
 	
 	public void disable() {
 		if(status) {
+			Modules.ACTIVE.remove(this);
 			status = false;
 		}
 	}

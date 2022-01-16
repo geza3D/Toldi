@@ -305,14 +305,14 @@ public class ColorButton extends ButtonPanel {
 		}
 		
 		@Override
-		public void click(int mouseX, int mouseY) {
+		public boolean click(int mouseX, int mouseY) {
 			textField.mouseClicked(mouseX, mouseY, 0);
 			if(textField.isFocused()) {
 				button.forceSphere = false;
 			} else {
 				button.forceSphere = true;
 			}
-			super.click(mouseX, mouseY);
+			return super.click(mouseX, mouseY);
 		}
 		
 		@Override

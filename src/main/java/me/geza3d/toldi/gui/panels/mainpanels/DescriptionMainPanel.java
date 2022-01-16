@@ -16,7 +16,7 @@ public class DescriptionMainPanel extends MainPanel {
 		fill(matrices, x, y, x+width, y+height, GuiValues.c2);
 		if(GuiValues.hoveredPanel != null) {
 			drawCenteredText(matrices, Toldi.TEXTRENDERER, GuiValues.hoveredPanel.getDescription(), x + width/2, y + height / 2 - 5, 0xFFFFFFFF);
-		}	
+		}
 	}
 	
 

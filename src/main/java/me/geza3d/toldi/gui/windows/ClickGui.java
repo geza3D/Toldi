@@ -1,33 +1,32 @@
 package me.geza3d.toldi.gui.windows;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.gui.panels.MainPanel;
-import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.CategoryButton;
+import me.geza3d.toldi.gui.panels.buttons.SimpleButton;
 import me.geza3d.toldi.gui.panels.mainpanels.DescriptionMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.KeyBindMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.ModulesMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.SettingMainPanel;
 import me.geza3d.toldi.module.EnumModuleType;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Items;
-import net.minecraft.text.Text;
+import net.minecraft.text.LiteralText;
 
-public class ClickGui extends Screen {
-	
-	List<Panel> panels = new ArrayList<>();
-	public static EnumModuleType selectedType = EnumModuleType.RENDER;
-	
+public class ClickGui extends Window {
+
 	public ClickGui() {
-		super(Text.of("clickgui"));
+		super(new LiteralText("clickgui"));
 	}
 	
 	@Override
 	protected void init() {
 		panels.clear();
+		if(GuiValues.selectedType.ordinal() > 6)
+			GuiValues.selectedType = EnumModuleType.RENDER;
+		if(GuiValues.selectedModule != null && GuiValues.selectedModule.getType().ordinal() > 6)
+			GuiValues.selectedModule = null;
+		
 		int width = this.width / 2;
 		int height = this.height / 2;
 		
@@ -61,70 +60,22 @@ public class ClickGui extends Screen {
 		DescriptionMainPanel description = new DescriptionMainPanel(width - 170, height + 92, 370, 16);
 		
 		panels.add(description);
+		
+		MainPanel windowPanel = new MainPanel(width + 202, height - 120, 50, 226);
+		windowPanel.renderBackground = false;
+		windowPanel.addButton(new SimpleButton(windowPanel, width + 204, height - 118, 46, 20, "Hud", new Runnable() {
+			@Override
+			public void run() {
+				Toldi.CLIENT.setScreen(new HudEditor());
+			}
+		}));
+		
+		panels.add(windowPanel);
 	}
 	
 	@Override
 	public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		renderBackground(matrices);
-		for(Panel panel : panels) {
-			panel.render(matrices, mouseX, mouseY, delta);
-		}
-		GuiValues.hoveredPanel = null;
+		super.render(matrices, mouseX, mouseY, delta);
 	}
-	
-	@Override
-	public boolean mouseClicked(double mouseX, double mouseY, int button) {
-		for(Panel panel : panels) {
-			if(button == 0) {
-				panel.click((int) mouseX, (int) mouseY);
-			} else if (button == 1) {
-				panel.rightClick((int) mouseX, (int) mouseY);
-			}
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean mouseReleased(double mouseX, double mouseY, int button) {
-		for(Panel panel : panels) {
-			panel.releaseMouse((int) mouseX, (int) mouseY);
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean mouseScrolled(double mouseX, double mouseY, double amount) {
-		for(Panel panel : panels) {
-			if(panel instanceof MainPanel) {
-				((MainPanel) panel).handleScroll((int) mouseX, (int) mouseY, (int) amount);
-			}
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-		for(Panel panel : panels) {
-			panel.keyPressed(keyCode, scanCode, modifiers);
-		}
-		return super.keyPressed(keyCode, scanCode, modifiers);
-	}
-	
-	@Override
-	public boolean keyReleased(int keyCode, int scanCode, int modifiers) {
-		for(Panel panel : panels) {
-			panel.keyReleased(keyCode, scanCode, modifiers);
-		}
-		return false;
-	}
-	
-	@Override
-	public boolean charTyped(char chr, int modifiers) {
-		for(Panel panel : panels) {
-			panel.charTyped(chr, modifiers);
-		}
-		return false;
-	}
-	
-	
 }

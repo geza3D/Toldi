@@ -18,7 +18,7 @@ public class MainPanel extends Panel {
 	protected int scrollOffset = 0;
 	protected int desiredScrollOffset = 0;
 	
-	protected List<ButtonPanel> buttons = new ArrayList<>();
+	protected List<Panel> buttons = new ArrayList<>();
 	
 	public MainPanel(int x, int y, int width, int height, boolean scrollable) {
 		super(x, y, width, height);
@@ -33,7 +33,7 @@ public class MainPanel extends Panel {
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		if(renderBackground) DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, new Color(0x360094, false).getRGB());
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}
 	}
@@ -62,21 +62,21 @@ public class MainPanel extends Panel {
 	
 	@Override
 	protected void onClick(int mouseX, int mouseY) {
-		for(ButtonPanel button : buttons) {
-			button.click(mouseX, mouseY);
+		for(Panel button : buttons) {
+			if(button.click(mouseX, mouseY)) break;
 		}
 	}
 	
 	@Override
 	protected void onRightClick(int mouseX, int mouseY) {
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.rightClick(mouseX, mouseY);
 		}
 	}
 	
 	@Override
 	protected void onReleaseMouse(int mouseX, int mouseY) {
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.releaseMouse(mouseX, mouseY);
 		}
 	}
@@ -87,21 +87,21 @@ public class MainPanel extends Panel {
 	
 	@Override
 	protected void onCharTyped(char chr, int modifiers) {
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.charTyped(chr, modifiers);
 		}
 	}
 	
 	@Override
 	protected void onKeyPressed(int keyCode, int scanCode, int modifiers) {
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.keyPressed(keyCode, scanCode, modifiers);
 		}
 	}
 	
 	@Override
 	protected void onKeyReleased(int keyCode, int scanCode, int modifiers) {
-		for(ButtonPanel button : buttons) {
+		for(Panel button : buttons) {
 			button.keyReleased(keyCode, scanCode, modifiers);
 		}
 	}

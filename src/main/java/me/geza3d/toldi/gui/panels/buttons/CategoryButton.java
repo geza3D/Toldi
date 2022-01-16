@@ -5,7 +5,6 @@ import java.util.Random;
 import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
-import me.geza3d.toldi.gui.windows.ClickGui;
 import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.util.RenderUtil;
@@ -29,7 +28,7 @@ public class CategoryButton extends ButtonPanel {
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		int rgb = GuiValues.c3;
-		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || ClickGui.selectedType == type) {
+		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || GuiValues.selectedType == type) {
 			rgb = GuiValues.c4;
 			r++;
 			r%=360;
@@ -41,7 +40,7 @@ public class CategoryButton extends ButtonPanel {
 
 	@Override
 	protected void onClick(int mouseX, int mouseY) {
-		ClickGui.selectedType = type;
+		GuiValues.selectedType = type;
 		GuiValues.selectedModule = null;
 	}
 	
