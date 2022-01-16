@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.lwjgl.opengl.GL11;
 
-import me.geza3d.toldi.util.GuiUtil;
+import me.geza3d.toldi.util.RenderUtil;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
@@ -46,7 +46,7 @@ public class MainPanel extends Panel {
 			scrollOffset -= 2;
 		}
 		GL11.glEnable(GL11.GL_SCISSOR_TEST);
-		GuiUtil.glScissors(x, unOffsettedY, width, height);
+		RenderUtil.glScissors(x, unOffsettedY, width, height);
 		super.render(matrices, mouseX, mouseY, delta);
 		GL11.glDisable(GL11.GL_SCISSOR_TEST);
 	}

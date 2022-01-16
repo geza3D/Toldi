@@ -40,5 +40,7 @@
 
 "module.toldi.fullbright.name": "Fullbright",
 
-"module.toldi.storageesp.name": "StorageESP"
+"module.toldi.storageesp.name": "StorageESP",
+"setting.toldi.storageesp.dynamiccolor.name": "DynamicColor",
+"setting.toldi.storageesp.color.name": "Color"
 }

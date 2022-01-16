@@ -9,7 +9,7 @@ import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.module.settings.Setting.ColorSetting;
-import me.geza3d.toldi.util.GuiUtil;
+import me.geza3d.toldi.util.RenderUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
@@ -114,7 +114,7 @@ public class ColorButton extends ButtonPanel {
 		
 		@Override
 		protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-			GuiUtil.drawColorCircle(matrices, radius, x, y);
+			RenderUtil.drawColorCircle(matrices, radius, x, y);
 			float[] hsb = {0,0,0};
 			hsb = Color.RGBtoHSB(setting.getRed(), setting.getGreen(), setting.getBlue(), hsb);
 			if(clicked) {
@@ -191,7 +191,7 @@ public class ColorButton extends ButtonPanel {
 		protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 			float[] hsb = {0,0,0};
 			hsb = Color.RGBtoHSB(setting.getRed(), setting.getGreen(), setting.getBlue(), hsb);
-			GuiUtil.fillHGradient(matrices, x, y+2, width, height-4, 0xFF000000, Color.HSBtoRGB(hsb[0], hsb[1], 1f));
+			RenderUtil.fillHGradient(matrices, x, y+2, width, height-4, 0xFF000000, Color.HSBtoRGB(hsb[0], hsb[1], 1f));
 			if(clicked) {
 				sliderX = MathHelper.clamp(mouseX-x, 0, width);
 				setColorFromInput();
@@ -223,7 +223,7 @@ public class ColorButton extends ButtonPanel {
 		protected void setColorFromInput() {
 			float[] hsb = {0, 0, 0};
 			hsb = Color.RGBtoHSB(setting.getRed(), setting.getGreen(), setting.getBlue(), hsb);
-			Color color = new Color(Color.HSBtoRGB(hsb[0], hsb[1], sliderX / (float) width));
+			Color color = new Color(Color.HSBtoRGB(hsb[0], hsb[1], (float) sliderX / (float) width));
 			setting.setRed(color.getRed());
 			setting.setBlue(color.getBlue());
 			setting.setGreen(color.getGreen());
@@ -241,8 +241,8 @@ public class ColorButton extends ButtonPanel {
 		
 		@Override
 		protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-			GuiUtil.drawRowBasedCheckerBoard(matrices, 5, x, y+2, width, height-4, 0xFFFFFFFF, 0xFFBFBFBF);
-			GuiUtil.fillHGradient(matrices, x, y+2, width, height-4, 
+			RenderUtil.drawRowBasedCheckerBoard(matrices, 5, x, y+2, width, height-4, 0xFFFFFFFF, 0xFFBFBFBF);
+			RenderUtil.fillHGradient(matrices, x, y+2, width, height-4, 
 					new Color(setting.getRed(), setting.getGreen(), setting.getBlue(), 0).getRGB(), 
 					new Color(setting.getRed(), setting.getGreen(), setting.getBlue(), 255).getRGB());
 			if(clicked) {

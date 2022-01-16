@@ -7,7 +7,7 @@ import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.module.EnumModuleType;
-import me.geza3d.toldi.util.GuiUtil;
+import me.geza3d.toldi.util.RenderUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,8 +33,8 @@ public class CategoryButton extends ButtonPanel {
 			r++;
 			r%=360;
 		}
-		GuiUtil.drawPolygon(matrices, 0+r, 360+r, 5, 15, x, y, ClickGui.c2);
-		GuiUtil.drawPolygon(matrices, 0+r, 360+r, 5, 13, x+2, y+2, rgb);
+		RenderUtil.drawPolygon(matrices, 0+r, 360+r, 5, 15, x, y, ClickGui.c2);
+		RenderUtil.drawPolygon(matrices, 0+r, 360+r, 5, 13, x+2, y+2, rgb);
 		Toldi.CLIENT.getItemRenderer().renderGuiItemIcon(new ItemStack(item), x+7, y+7);
 	}
 
