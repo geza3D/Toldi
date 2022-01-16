@@ -41,5 +41,10 @@ public class ModuleButton extends ButtonPanel {
 	public ToldiModule getModule() {
 		return module;
 	}
+	
+	@Override
+	public String getDescription() {
+		return module.getDescription();
+	}
 
 }

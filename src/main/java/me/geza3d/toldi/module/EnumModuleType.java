@@ -53,7 +53,16 @@ public enum EnumModuleType implements IModuleType{
 	
 	public String getName() {
 		try {
-			return new TranslatableText(PREFIX+getTypeName()).parse(null, null, 0).getString();
+			return new TranslatableText(PREFIX+getTypeName()+".name").parse(null, null, 0).getString();
+		} catch (CommandSyntaxException e) {
+			e.printStackTrace();
+		}
+		return getTypeName();
+	}
+	
+	public String getDesc() {
+		try {
+			return new TranslatableText(PREFIX+getTypeName()+".desc").parse(null, null, 0).getString();
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}

@@ -23,7 +23,6 @@ public class ToldiModule extends SettingHolder {
 	protected EnumModuleType type;
 	protected String name;
 	public String info = "";
-	protected String desc;
 	protected boolean status = false;
 	
 	public KeyBindSetting keybindSetting = new KeyBindSetting(this, "keybind", -1);
@@ -58,7 +57,6 @@ public class ToldiModule extends SettingHolder {
 			throw new RuntimeException("Unregistered module! Register " + this.getClass().toString() + " using the @ModuleReg annotiation");
 		}
 		name = this.getClass().getSimpleName().toLowerCase();
-		desc = this.getClass().getSimpleName().toLowerCase();
 		this.type = type.value();
 		switch(this.type) {
 		case RENDER:
@@ -124,6 +122,15 @@ public class ToldiModule extends SettingHolder {
 	
 	public String getName() {
 		return getRawName() + (info.isEmpty() ? "" : " " + info);
+	}
+	
+	public String getDescription() {
+		try {
+			return new TranslatableText("module." + Toldi.MODID + "." + name + ".desc").parse(null, null, 0).getString();
+		} catch (CommandSyntaxException e) {
+			e.printStackTrace();
+		}
+		return name;
 	}
 	
 	public EnumModuleType getType() {

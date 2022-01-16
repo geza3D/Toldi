@@ -43,5 +43,10 @@ public class CategoryButton extends ButtonPanel {
 		ClickGui.selectedType = type;
 		ClickGui.selectedModule = null;
 	}
+	
+	@Override
+	public String getDescription() {
+		return type.getDesc();
+	}
 
 }

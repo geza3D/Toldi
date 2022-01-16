@@ -1,12 +1,20 @@
 {
 //Types
-"type.toldi.render": "Render",
-"type.toldi.exploit": "Exploit",
-"type.toldi.movement": "Movement",
-"type.toldi.combat": "Combat",
-"type.toldi.world": "World",
-"type.toldi.player": "Player",
-"type.toldi.all": "All",
+"type.toldi.render.name": "Render",
+"type.toldi.exploit.name": "Exploit",
+"type.toldi.movement.name": "Movement",
+"type.toldi.combat.name": "Combat",
+"type.toldi.world.name": "World",
+"type.toldi.player.name": "Player",
+"type.toldi.all.name": "All",
+
+"type.toldi.render.desc": "Render: Modules that make you see the world differently.",
+"type.toldi.exploit.desc": "Exploit: Modules that involve somesort of exploit.",
+"type.toldi.movement.desc": "Movement: Modules that make travelling easier.",
+"type.toldi.combat.desc": "Combat: Modules that make fighting easier.",
+"type.toldi.world.desc": "World: Modules that make the world different.",
+"type.toldi.player.desc": "Player: Modules that make the player different.",
+"type.toldi.all.desc": "All: Every module.",
 
 //KeyBinds
 "setting.keybind.key" : "Key",
@@ -15,32 +23,53 @@
 
 //Modules
 "module.toldi.debug.name": "Debug",
+"module.toldi.debug.desc": "It's ratted.",
 "setting.toldi.debug.test1.name": "Test1",
+"setting.toldi.debug.test1.desc": "IntegerSetting",
 "setting.toldi.debug.test2.name": "Test2",
+"setting.toldi.debug.test2.desc": "DoubleSetting",
 "setting.toldi.debug.test3.name": "Test3",
+"setting.toldi.debug.test3.desc": "BooleanSetting",
 "setting.toldi.debug.test4.name": "Test4",
+"setting.toldi.debug.test4.desc": "ModeSetting",
 "setting.toldi.debug.test5.name": "Test5",
+"setting.toldi.debug.test5.desc": "ColorSetting",
 "setting.toldi.debug.test4.a": "A",
 "setting.toldi.debug.test4.b": "B",
 "setting.toldi.debug.test4.c": "C",
 
 "module.toldi.portalgodmode.name": "PortalGodmode",
+"module.toldi.portalgodmode.desc": "Makes you invincible after leaving a portal.",
 
 "module.toldi.boatfly.name": "BoatFly",
+"module.toldi.boatfly.desc": "Makes boats fly.",
 "setting.toldi.boatfly.hspeed.name": "HSpeed",
+"setting.toldi.boatfly.hspeed.desc": "Horizontal speed.",
 "setting.toldi.boatfly.vspeed.name": "VSpeed",
+"setting.toldi.boatfly.vspeed.desc": "Vertical speed.",
 "setting.toldi.boatfly.bypass.name": "Bypass",
+"setting.toldi.boatfly.bypass.desc": "Makes BoatFly bypass anti-cheats in some cases.",
 "setting.toldi.boatfly.noclip.name": "NoClip",
+"setting.toldi.boatfly.noclip.desc": "Lets the boat fly inside of blocks too.",
 
 "module.toldi.freecam.name": "Freecam",
+"module.toldi.freecam.desc": "Lets you look around the world freely.",
 "setting.toldi.freecam.speed.name": "Speed",
+"setting.toldi.freecam.speed.desc": "Speed.",
 
 "module.toldi.timer.name": "Timer",
+"module.toldi.timer.desc": "Changes the speed of the world.",
 "setting.toldi.timer.speed.name": "Speed",
+"setting.toldi.timer.speed.desc": "How much the world speed is multiplied.",
 
 "module.toldi.fullbright.name": "Fullbright",
+"module.toldi.fullbright.desc": "Lets you see in the dark.",
 
 "module.toldi.storageesp.name": "StorageESP",
+"module.toldi.storageesp.desc": "Highlights storage blocks.",
 "setting.toldi.storageesp.dynamiccolor.name": "DynamicColor",
-"setting.toldi.storageesp.color.name": "Color"
+"setting.toldi.storageesp.dynamiccolor.desc": "Makes blocks have their own colors.",
+"setting.toldi.storageesp.color.name": "Color",
+"setting.toldi.storageesp.color.desc": "If DynamicColor is disabled, the color of the ESP."
+
 }

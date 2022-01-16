@@ -104,5 +104,10 @@ public class NumberSettingButton extends ButtonPanel {
 			textField.charTyped(chr, modifiers);
 		}
 	}
+	
+	@Override
+	public String getDescription() {
+		return setting.getDesc();
+	}
 
 }

@@ -20,7 +20,7 @@ public class Setting<T> {
 	
 	public Setting(SettingHolder holder, String name, T defaultValue) {
 		this.name = name;
-		this.desc = "setting." + Toldi.MODID + "." + holder.getHolderName() + "." + name + ".description";
+		this.desc = "setting." + Toldi.MODID + "." + holder.getHolderName() + "." + name + ".desc";
 		this.value = defaultValue;
 		this.holder = holder;
 		holder.settings.add(this);

@@ -36,5 +36,10 @@ public class ModeSettingButton extends ButtonPanel {
 		setting.decrement();
 		text = setting.getMode();
 	}
+	
+	@Override
+	public String getDescription() {
+		return setting.getDesc();
+	}
 
 }

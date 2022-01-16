@@ -353,4 +353,9 @@ public class ColorButton extends ButtonPanel {
 		}
 		
 	}
+	
+	@Override
+	public String getDescription() {
+		return setting.getDesc();
+	}
 }

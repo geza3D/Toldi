@@ -48,4 +48,9 @@ public class BooleanSettingButton extends ButtonPanel {
 			desiredLeverX = switchX;
 		}
 	}
+	
+	@Override
+	public String getDescription() {
+		return setting.getDesc();
+	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.Panel;
 import me.geza3d.toldi.gui.panels.buttons.CategoryButton;
+import me.geza3d.toldi.gui.panels.mainpanels.DescriptionMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.KeyBindMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.ModulesMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.SettingMainPanel;
@@ -21,6 +22,7 @@ public class ClickGui extends Screen {
 	List<Panel> panels = new ArrayList<>();
 	public static EnumModuleType selectedType = EnumModuleType.RENDER;
 	public static ToldiModule selectedModule = null;
+	public static Panel hoveredPanel = null;
 	/**Main*/
 	public static int c1 = 0xff384266;
 	
@@ -78,6 +80,10 @@ public class ClickGui extends Screen {
 		KeyBindMainPanel keybind = new KeyBindMainPanel(width + 2, height + 70, 198, 20);
 		
 		panels.add(keybind);
+		
+		DescriptionMainPanel description = new DescriptionMainPanel(width - 170, height + 92, 370, 16);
+		
+		panels.add(description);
 	}
 	
 	@Override
@@ -86,6 +92,7 @@ public class ClickGui extends Screen {
 		for(Panel panel : panels) {
 			panel.render(matrices, mouseX, mouseY, delta);
 		}
+		hoveredPanel = null;
 	}
 	
 	@Override
