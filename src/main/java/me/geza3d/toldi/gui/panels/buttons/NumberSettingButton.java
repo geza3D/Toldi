@@ -1,9 +1,9 @@
 package me.geza3d.toldi.gui.panels.buttons;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.settings.NumberSetting;
 import me.geza3d.toldi.module.settings.NumberSetting.DoubleSetting;
 import me.geza3d.toldi.module.settings.NumberSetting.IntegerSetting;
@@ -29,7 +29,7 @@ public class NumberSettingButton extends ButtonPanel {
 
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		fill(matrices, x, y, x + width, y + height, ClickGui.c5);
+		fill(matrices, x, y, x + width, y + height, GuiValues.c5);
 		textField.y = y+height/2-4;
 		double max = 1;
 		//double min = 1; TODO
@@ -47,9 +47,9 @@ public class NumberSettingButton extends ButtonPanel {
 		int sliderWidth = (int)(width * MathHelper.clamp(value / max,0,1));
 		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(text), x, y, 0xffffffff);
 		textField.render(matrices, mouseX, mouseY, delta);
-		fill(matrices, x, y+10, x + width, y + height-1, ClickGui.c6);
-		fill(matrices, x, y+10, x + sliderWidth, y + height-1, ClickGui.c7);
-		fill(matrices, x + sliderWidth, y+9, x + sliderWidth + 2, y + height, ClickGui.c7);
+		fill(matrices, x, y+10, x + width, y + height-1, GuiValues.c6);
+		fill(matrices, x, y+10, x + sliderWidth, y + height-1, GuiValues.c7);
+		fill(matrices, x + sliderWidth, y+9, x + sliderWidth + 2, y + height, GuiValues.c7);
 		if(selected) {
 			if(setting instanceof IntegerSetting) {
 				((IntegerSetting)setting).setValue(Integer.valueOf((int) (MathHelper.clamp((mouseX-x) / (double) width, 0, 1) * max)));

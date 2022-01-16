@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.util.List;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.buttons.ModuleButton;
+import me.geza3d.toldi.gui.windows.ClickGui;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
@@ -24,7 +25,7 @@ public class ModulesMainPanel extends MainPanel {
 	
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, ClickGui.c1);
+		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, GuiValues.c1);
 		if(prevType != ClickGui.selectedType) {
 			prevType = ClickGui.selectedType;
 			scrollOffset = 0;
@@ -38,7 +39,7 @@ public class ModulesMainPanel extends MainPanel {
 		for(ButtonPanel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}
-		fill(matrices, x, y, x+width, y+14, ClickGui.c2);
+		fill(matrices, x, y, x+width, y+14, GuiValues.c2);
 		drawCenteredText(matrices, Toldi.TEXTRENDERER, ClickGui.selectedType.getName(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
 	}
 

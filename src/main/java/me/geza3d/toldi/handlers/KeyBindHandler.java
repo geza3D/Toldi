@@ -3,7 +3,7 @@ package me.geza3d.toldi.handlers;
 import org.lwjgl.glfw.GLFW;
 import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.events.KeyCallback;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
+import me.geza3d.toldi.gui.windows.ClickGui;
 import me.geza3d.toldi.keybind.ModuleKeyBind;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;

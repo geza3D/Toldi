@@ -5,11 +5,11 @@ import java.awt.Color;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.buttons.BooleanSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.ColorButton.ColorSettingButton;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.gui.panels.buttons.ModeSettingButton;
 import me.geza3d.toldi.gui.panels.buttons.NumberSettingButton;
 import me.geza3d.toldi.module.ToldiModule;
@@ -32,9 +32,9 @@ public class SettingMainPanel extends MainPanel {
 	
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, ClickGui.c1);
-		if(prevModule != ClickGui.selectedModule) {
-			prevModule = ClickGui.selectedModule;
+		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, GuiValues.c1);
+		if(prevModule != GuiValues.selectedModule) {
+			prevModule = GuiValues.selectedModule;
 			scrollOffset = 0;
 			desiredScrollOffset = 0;
 			buttons.clear();
@@ -61,9 +61,9 @@ public class SettingMainPanel extends MainPanel {
 		for(ButtonPanel button : buttons) {
 			button.render(matrices, mouseX, mouseY, delta);
 		}
-		fill(matrices, x, y, x+width, y+14, ClickGui.c2);
+		fill(matrices, x, y, x+width, y+14, GuiValues.c2);
 		try {
-			drawCenteredText(matrices, Toldi.TEXTRENDERER, ClickGui.selectedModule != null ? ClickGui.selectedModule.getName() : new TranslatableText("module."+Toldi.MODID+".null.name").parse(null, null, 0).asString(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
+			drawCenteredText(matrices, Toldi.TEXTRENDERER, GuiValues.selectedModule != null ? GuiValues.selectedModule.getName() : new TranslatableText("module."+Toldi.MODID+".null.name").parse(null, null, 0).asString(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}

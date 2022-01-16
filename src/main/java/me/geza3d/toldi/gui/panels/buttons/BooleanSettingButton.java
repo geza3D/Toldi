@@ -1,9 +1,9 @@
 package me.geza3d.toldi.gui.panels.buttons;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
@@ -28,15 +28,15 @@ public class BooleanSettingButton extends ButtonPanel {
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 		switchY = y + height / 2 - 5;
-		fill(matrices, x, y, x + width, y + height, ClickGui.c5);
+		fill(matrices, x, y, x + width, y + height, GuiValues.c5);
 		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(text), x, y + height / 2 - 4, 0xffffffff);
-		fill(matrices, switchX, switchY+2, switchX + 25, switchY + 8, ClickGui.c6);
+		fill(matrices, switchX, switchY+2, switchX + 25, switchY + 8, GuiValues.c6);
 		if(leverX < desiredLeverX) {
 			leverX++;
 		} else if(leverX > desiredLeverX) {
 			leverX--;
 		}
-		fill(matrices, leverX, switchY, leverX + 10, switchY + 10, ClickGui.c7);
+		fill(matrices, leverX, switchY, leverX + 10, switchY + 10, GuiValues.c7);
 	}
 	
 	@Override

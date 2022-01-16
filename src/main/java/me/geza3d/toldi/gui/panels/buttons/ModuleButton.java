@@ -3,9 +3,9 @@ package me.geza3d.toldi.gui.panels.buttons;
 import java.awt.Color;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.ToldiModule;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -26,14 +26,14 @@ public class ModuleButton extends ButtonPanel {
 	
 	@Override
 	protected void onRightClick(int mouseX, int mouseY) {
-		ClickGui.selectedModule = module;
+		GuiValues.selectedModule = module;
 	}
 
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		int rgb = ClickGui.c3;
-		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || ClickGui.selectedModule == module) 
-			rgb = ClickGui.c4;
+		int rgb = GuiValues.c3;
+		if(main.isMouseOver(mouseX, mouseY) && isMouseOver(mouseX, mouseY) || GuiValues.selectedModule == module) 
+			rgb = GuiValues.c4;
 		DrawableHelper.fill(matrices, x, y, x+width, y+height, rgb);
 		drawCenteredText(matrices, Toldi.TEXTRENDERER, text, x + width/2, y + (height - 10) / 2, module.getRawStatus() ? new Color(0x00ffd9, false).getRGB() : Color.WHITE.getRGB());
 	}

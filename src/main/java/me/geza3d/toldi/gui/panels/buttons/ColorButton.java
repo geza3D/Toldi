@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.geza3d.toldi.Toldi;
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.settings.Setting.ColorSetting;
 import me.geza3d.toldi.util.RenderUtil;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -43,7 +43,7 @@ public class ColorButton extends ButtonPanel {
 		
 		@Override
 		protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-			fill(matrices, x, y, x+width, y+height, ClickGui.c5);
+			fill(matrices, x, y, x+width, y+height, GuiValues.c5);
 			drawStringWithShadow(matrices, Toldi.TEXTRENDERER, setting.getName(), x, y+3, 0xFFFFFFFF);
 			for(ButtonPanel button : buttons) {
 				button.render(matrices, mouseX, mouseY, delta);
@@ -198,7 +198,7 @@ public class ColorButton extends ButtonPanel {
 			} else {
 				sliderX = (int) (width * hsb[2]);
 			}
-			fill(matrices, x+sliderX, y, x+sliderX+2, y+height, ClickGui.c7);
+			fill(matrices, x+sliderX, y, x+sliderX+2, y+height, GuiValues.c7);
 			super.onRender(matrices, mouseX, mouseY, delta);
 		}
 		
@@ -251,7 +251,7 @@ public class ColorButton extends ButtonPanel {
 			} else {
 				sliderX = (int) (width * setting.getAlpha() / 255f);
 			}
-			fill(matrices, x+sliderX, y, x+sliderX+2, y+height, ClickGui.c7);
+			fill(matrices, x+sliderX, y, x+sliderX+2, y+height, GuiValues.c7);
 			super.onRender(matrices, mouseX, mouseY, delta);
 		}
 		

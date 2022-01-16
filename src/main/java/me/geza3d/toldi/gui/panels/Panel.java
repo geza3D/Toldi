@@ -1,6 +1,6 @@
 package me.geza3d.toldi.gui.panels;
 
-import me.geza3d.toldi.gui.clickgui.ClickGui;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -30,7 +30,7 @@ public class Panel extends DrawableHelper implements Drawable{
 		if(visible) {
 			onRender(matrices, mouseX, mouseY, delta);
 			if(getDescription() != null && isMouseOver(mouseX, mouseY)) {
-				ClickGui.hoveredPanel = this;
+				GuiValues.hoveredPanel = this;
 			}
 		}
 	}

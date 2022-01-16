@@ -1,10 +1,10 @@
 package me.geza3d.toldi.gui.panels.mainpanels;
 
-import me.geza3d.toldi.gui.clickgui.ClickGui;
 import me.geza3d.toldi.gui.panels.ButtonPanel;
 import me.geza3d.toldi.gui.panels.MainPanel;
 import me.geza3d.toldi.gui.panels.buttons.KeyBindButton;
 import me.geza3d.toldi.gui.panels.buttons.KeyBindModeButton;
+import me.geza3d.toldi.gui.windows.GuiValues;
 import me.geza3d.toldi.module.ToldiModule;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
@@ -19,9 +19,9 @@ public class KeyBindMainPanel extends MainPanel {
 	
 	@Override
 	protected void onRender(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, ClickGui.c2);
-		if(prevModule != ClickGui.selectedModule) {
-			prevModule = ClickGui.selectedModule;
+		DrawableHelper.fill(matrices, x, unOffsettedY, x+width, unOffsettedY+height, GuiValues.c2);
+		if(prevModule != GuiValues.selectedModule) {
+			prevModule = GuiValues.selectedModule;
 			scrollOffset = 0;
 			desiredScrollOffset = 0;
 			buttons.clear();

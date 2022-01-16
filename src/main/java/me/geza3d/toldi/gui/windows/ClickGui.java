@@ -1,4 +1,4 @@
-package me.geza3d.toldi.gui.clickgui;
+package me.geza3d.toldi.gui.windows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,6 @@ import me.geza3d.toldi.gui.panels.mainpanels.KeyBindMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.ModulesMainPanel;
 import me.geza3d.toldi.gui.panels.mainpanels.SettingMainPanel;
 import me.geza3d.toldi.module.EnumModuleType;
-import me.geza3d.toldi.module.ToldiModule;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.Items;
@@ -21,28 +20,6 @@ public class ClickGui extends Screen {
 	
 	List<Panel> panels = new ArrayList<>();
 	public static EnumModuleType selectedType = EnumModuleType.RENDER;
-	public static ToldiModule selectedModule = null;
-	public static Panel hoveredPanel = null;
-	/**Main*/
-	public static int c1 = 0xff384266;
-	
-	/**Secondary*/
-	public static int c2 = 0xff4a5785;
-	
-	/**Button*/
-	public static int c3 = 0xff2c3659;
-	
-	/**Button Hovered*/
-	public static int c4 = 0xff6882de;
-	
-	/**Setting Main*/
-	public static int c5 = 0xff45507a;
-	
-	/**Setting Secondary*/
-	public static int c6 = 0xff272d45;
-	
-	/**Setting elements*/
-	public static int c7 = 0xff33a0ff;
 	
 	public ClickGui() {
 		super(Text.of("clickgui"));
@@ -92,7 +69,7 @@ public class ClickGui extends Screen {
 		for(Panel panel : panels) {
 			panel.render(matrices, mouseX, mouseY, delta);
 		}
-		hoveredPanel = null;
+		GuiValues.hoveredPanel = null;
 	}
 	
 	@Override
