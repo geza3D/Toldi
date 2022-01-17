@@ -22,7 +22,7 @@ public class EntityRenderDispatcherMixin {
 	}
 	
 	@Inject(method = "render", at = @At("RETURN"))
-	public void onRenderHPost(Entity entity, double x, double y, double z, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo info) {
+	public void onRenderPost(Entity entity, double x, double y, double z, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo info) {
 		RenderLivingEntityCallback.POST.invoker().render(matrices, entity);
 	}
 }

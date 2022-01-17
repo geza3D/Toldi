@@ -32,16 +32,16 @@ public class NumberSettingButton extends ButtonPanel {
 		fill(matrices, x, y, x + width, y + height, GuiValues.c5);
 		textField.y = y+height/2-4;
 		double max = 1;
-		//double min = 1; TODO
+		double min = 1;
 		double value = 1;
 		int width = this.width-40;
 		if(setting instanceof IntegerSetting) {
 			max = (double)(int) setting.getMax();
-			//min = (double)(int) setting.getMin();
+			min = (double)(int) setting.getMin();
 			value = (double)(int) setting.getValue();
 		} else {
 			max = (double) setting.getMax();
-			//min = (double) setting.getMin();
+			min = (double) setting.getMin();
 			value = (double) setting.getValue();
 		}
 		int sliderWidth = (int)(width * MathHelper.clamp(value / max,0,1));
@@ -52,9 +52,9 @@ public class NumberSettingButton extends ButtonPanel {
 		fill(matrices, x + sliderWidth, y+9, x + sliderWidth + 2, y + height, GuiValues.c7);
 		if(selected) {
 			if(setting instanceof IntegerSetting) {
-				((IntegerSetting)setting).setValue(Integer.valueOf((int) (MathHelper.clamp((mouseX-x) / (double) width, 0, 1) * max)));
+				((IntegerSetting)setting).setValue(Integer.valueOf((int) (min +  MathHelper.clamp((mouseX-x) / (double) width, 0, 1) * (max-min))));
 			} else {
-				((DoubleSetting)setting).setValue(Double.valueOf(MathHelper.clamp((mouseX-x) / (double) width, 0, 1) * max));
+				((DoubleSetting)setting).setValue(Double.valueOf(min + MathHelper.clamp((mouseX-x) / (double) width, 0, 1) * (max-min)));
 			}
 		}
 		if(!textField.isFocused()) {

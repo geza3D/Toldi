@@ -5,7 +5,7 @@ import me.geza3d.toldi.util.RotationUtil;
 
 public class ToldiRotatingModule extends ToldiModule {
 
-	public int priority;
+	private int priority;
 	
 	public ToldiRotatingModule(int priority) {
 		this.priority = priority;

@@ -22,21 +22,12 @@ public class RotationUtil {
 		 
 		double diffXZ = Math.sqrt(diffX * diffX + diffZ * diffZ);
 		 
-		float pitch = wrapPitch((float) -(Math.toDegrees(Math.atan2(diffY, diffXZ))));
 		float yaw = wrapYaw((float) -Math.toDegrees(Math.atan2(diffX, diffZ)));
+		float pitch = wrapPitch((float) -(Math.toDegrees(Math.atan2(diffY, diffXZ))));
+
 		
-		float[] returned = {pitch, yaw};
+		float[] returned = {yaw, pitch};
 		return returned;
-	}
-	
-	public static float wrapPitch(float pitch) {
-		if(pitch >= 90) {	
-			return 90 - (pitch % 90);
-		} else if(pitch < -90){
-			return -90 - (pitch % 90);	
-		}
-		 
-		return pitch;
 	}
 	
 	public static float wrapYaw(float yaw) {
@@ -47,5 +38,15 @@ public class RotationUtil {
 		}
 		
 		return yaw;
+	}
+	
+	public static float wrapPitch(float pitch) {
+		if(pitch >= 90) {	
+			return 90 - (pitch % 90);
+		} else if(pitch < -90){
+			return -90 - (pitch % 90);	
+		}
+		 
+		return pitch;
 	}
 }

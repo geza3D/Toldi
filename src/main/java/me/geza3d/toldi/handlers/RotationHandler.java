@@ -35,7 +35,7 @@ public class RotationHandler {
 	private static void initPacketSpoofer() {
 		SendMovementPacketsCallback.PRE.register(player -> {
 			if(rotationYaw != null && rotationPitch != null) {
-				realYaw = player.headYaw;
+				realYaw = player.getYaw();
 				realPitch = player.getPitch();
 				player.setYaw(rotationYaw);
 				player.setPitch(rotationPitch);
@@ -73,6 +73,7 @@ public class RotationHandler {
 				prevYaw = player.prevHeadYaw;
 				prevPitch = player.prevPitch;
 				player.headYaw = rotationYaw;
+				player.setYaw(rotationYaw);
 				player.setPitch(rotationPitch);
 				player.prevHeadYaw = rotationYaw;
 				player.prevPitch = rotationPitch;
@@ -83,6 +84,7 @@ public class RotationHandler {
 			if(entity instanceof ClientPlayerEntity && yaw != null && pitch != null && prevYaw != null && prevPitch != null) {
 				ClientPlayerEntity player = (ClientPlayerEntity) entity;
 				player.headYaw = yaw;
+				player.setYaw(yaw);
 				player.setPitch(pitch);
 				player.prevHeadYaw = prevYaw;
 				player.prevPitch = prevPitch;

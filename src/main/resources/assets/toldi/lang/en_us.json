@@ -76,6 +76,25 @@
 "module.toldi.activemodules.name": "ActiveModules",
 "module.toldi.activemodules.desc": "Displays the active modules.",
 "setting.toldi.activemodules.color.name": "Color",
-"setting.toldi.activemodules.color.desc": "The color."
+"setting.toldi.activemodules.color.desc": "The color.",
+
+"module.toldi.killaura.name": "KillAura",
+"module.toldi.killaura.desc": "Makes you attack entities near you.",
+"setting.toldi.killaura.distance.name": "Distance",
+"setting.toldi.killaura.distance.desc": "The maximum distance in which it will attack entities.",
+"setting.toldi.killaura.mode.name": "Priority",
+"setting.toldi.killaura.mode.desc": "What entities should be prioritized by.",
+"setting.toldi.killaura.mode.distance": "Distance",
+"setting.toldi.killaura.mode.health": "Health",
+"setting.toldi.killaura.attackpassive.name": "Target Passive",
+"setting.toldi.killaura.attackpassive.desc": "Whether it should target passive entities or not.",
+"setting.toldi.killaura.attackaggressive.name": "Target Aggressive",
+"setting.toldi.killaura.attackaggressive.desc": "Whether it should target aggressive entities or not.",
+"setting.toldi.killaura.attackneutral.name": "Target Neutral",
+"setting.toldi.killaura.attackneutral.desc": "Whether it should target neutral entities or not.",
+"setting.toldi.killaura.attackananimate.name": "Target Inanimate",
+"setting.toldi.killaura.attackananimate.desc": "Whether it should target inanimate entities or not.",
+"setting.toldi.killaura.attackplayer.name": "Target Players",
+"setting.toldi.killaura.attackplayer.desc": "Whether it should target players or not."
 
 }

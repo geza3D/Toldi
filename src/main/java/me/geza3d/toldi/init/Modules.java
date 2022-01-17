@@ -9,6 +9,7 @@ import java.util.Map;
 
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiModule;
+import me.geza3d.toldi.module.modules.combat.KillAura;
 import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
 import me.geza3d.toldi.module.modules.hud.ActiveModules;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
@@ -46,6 +47,9 @@ public class Modules {
 	
 	//Movement
 	public static BoatFly BOATFLY;
+	
+	//Combat
+	public static KillAura KILLAURA;
 	
 	//Player
 	public static Debug DEBUG;
