@@ -20,10 +20,11 @@ public class Debug extends ToldiModule {
 	ColorSetting test5 = new ColorSetting(this, "test5", Color.BLUE.getRGB());
 	
 	/*@Listener
-	public void onPacket() {
-		PacketCallback.IN.register(packet -> {
-			if(getStatus()) Toldi.LOGGER.info(packet.getClass());
-			return ActionResult.SUCCESS;
+	public void onTick() {
+		ClientTickEvents.START_CLIENT_TICK.register(client->{
+			if(getStatus()) {
+				RotationHandler.rotate(-180, 0);
+			}
 		});
 	}*/
 }

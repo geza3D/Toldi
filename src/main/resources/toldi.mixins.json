@@ -15,7 +15,9 @@
     "ClientEntityHandlerMixin",
     "GameRendererMixin",
     "KeyboardMixin",
-    "LightmapTextureManagerMixin"
+    "LightmapTextureManagerMixin",
+    "EntityRenderDispatcherMixin",
+    "ClientPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

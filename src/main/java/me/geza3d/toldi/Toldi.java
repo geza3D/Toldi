@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import me.geza3d.toldi.handlers.ConfigHandler;
 import me.geza3d.toldi.handlers.HudHandler;
 import me.geza3d.toldi.handlers.KeyBindHandler;
+import me.geza3d.toldi.handlers.RotationHandler;
 import me.geza3d.toldi.init.Modules;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
@@ -29,6 +30,7 @@ public class Toldi implements ModInitializer {
 		ConfigHandler.initConfigHandler();
 		KeyBindHandler.registerKeyBinds();
 		HudHandler.initHudHandler();
+		RotationHandler.initRotationHandler();
 	}
 
 }
