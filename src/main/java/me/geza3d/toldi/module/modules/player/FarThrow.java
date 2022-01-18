@@ -26,7 +26,6 @@ public class FarThrow extends ToldiModule {
 	BooleanSetting trident = new BooleanSetting(this, "trident", true);
 	BooleanSetting other = new BooleanSetting(this, "other", true);
 	
-	
 	@Listener
 	public void onPacketOut() {
 		PacketCallback.OUT.register(packet -> {
