@@ -63,7 +63,7 @@ public class SettingMainPanel extends MainPanel {
 		}
 		fill(matrices, x, y, x+width, y+14, GuiValues.c2);
 		try {
-			drawCenteredText(matrices, Toldi.TEXTRENDERER, GuiValues.selectedModule != null ? GuiValues.selectedModule.getName() : new TranslatableText("module."+Toldi.MODID+".null.name").parse(null, null, 0).asString(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
+			drawCenteredText(matrices, Toldi.TEXTRENDERER, GuiValues.selectedModule != null ? GuiValues.selectedModule.getRawName() : new TranslatableText("module."+Toldi.MODID+".null.name").parse(null, null, 0).asString(), x + width/2, unOffsettedY+2, Color.WHITE.getRGB());
 		} catch (CommandSyntaxException e) {
 			e.printStackTrace();
 		}

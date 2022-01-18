@@ -109,6 +109,7 @@ public class BoatFly extends ToldiModule {
 					entity.getVelocity().x = 0;
 					entity.getVelocity().z = 0;
 				}
+				if(getPlayer().age % 10 == 0) getWorld().sendPacket(PlayerInteractEntityC2SPacket.interact(boat, false, Hand.MAIN_HAND));
 			}
 			return ActionResult.SUCCESS;
 		});

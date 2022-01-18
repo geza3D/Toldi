@@ -1,7 +1,10 @@
 package me.geza3d.toldi.util;
 
 import me.geza3d.toldi.Toldi;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.HitResult.Type;
 
 public class MathUtil {
 
@@ -11,6 +14,10 @@ public class MathUtil {
 	
 	public static double getSideZ(double hyp, float yaw) {
 		return Math.cos(Math.toRadians(yaw)) * hyp;	
+	}
+	
+	public static double getSideY(double hyp, float pitch) {
+		return -Math.sin(Math.toRadians(pitch)) * hyp;	
 	}
 	
 	public static double calculateX(LivingEntity e, double hyp) {
@@ -100,5 +107,19 @@ public class MathUtil {
 			}
 		}
 		return yaw;
+	}
+	
+	public static boolean hasNoBlockInAngle(ClientPlayerEntity player, double distance, float rotationYaw, float rotationPitch) {
+		float yaw = player.getYaw();
+		float pitch = player.getPitch();
+		player.setYaw(rotationYaw);
+		player.setPitch(rotationPitch);
+		HitResult result = player.raycast(distance, 0f, false);
+		player.setYaw(yaw);
+		player.setPitch(pitch);
+		if(result.getType() == Type.BLOCK) {
+			return false;
+		}
+		return true;
 	}
 }

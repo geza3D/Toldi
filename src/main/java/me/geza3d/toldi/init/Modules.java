@@ -14,6 +14,7 @@ import me.geza3d.toldi.module.modules.exploit.PortalGodmode;
 import me.geza3d.toldi.module.modules.hud.ActiveModules;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
+import me.geza3d.toldi.module.modules.player.FarThrow;
 import me.geza3d.toldi.module.modules.render.Freecam;
 import me.geza3d.toldi.module.modules.render.Fullbright;
 import me.geza3d.toldi.module.modules.render.StorageESP;
@@ -53,6 +54,7 @@ public class Modules {
 	
 	//Player
 	public static Debug DEBUG;
+	public static FarThrow FARTHROW;
 	
 	//World
 	public static Timer TIMER;

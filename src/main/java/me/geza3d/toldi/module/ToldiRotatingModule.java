@@ -2,14 +2,14 @@ package me.geza3d.toldi.module;
 
 import me.geza3d.toldi.events.RotatingModuleCallback;
 import me.geza3d.toldi.util.RotationUtil;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 public class ToldiRotatingModule extends ToldiModule {
 
-	private int priority;
+	protected int priority;
 	
-	public ToldiRotatingModule(int priority) {
-		this.priority = priority;
-		RotatingModuleCallback.DISABLE.register(module -> {
+	public ToldiRotatingModule() {
+		ClientTickEvents.START_CLIENT_TICK.register(client -> {
 			if(getRawStatus()) {
 				updatePriority();
 			}
@@ -17,29 +17,32 @@ public class ToldiRotatingModule extends ToldiModule {
 	}
 	
 	public void updatePriority() {
-		if(RotationUtil.currentPriority < priority) {
-			RotationUtil.currentPriority = priority;
-			info = "[ON]";
+		if(priority == -1) {
+			info = "";
 		} else {
-			info = "[OFF]";
+			if(RotationUtil.currentPriority <= priority) {
+				RotationUtil.currentPriority = priority;
+				info = "[ON]";
+			} else {
+				info = "[HOLD]";
+			}
 		}
 	}
 	
 	@Override
 	public void enable() {
-		
+		updatePriority();
 		super.enable();
 	}
 	
 	@Override
 	public void disable() {
+		super.disable();
 		RotationUtil.currentPriority = -1;
 		RotatingModuleCallback.DISABLE.invoker().handle(this);
-		super.disable();
 	}
 	
-	@Override
-	public boolean getStatus() {
-		return super.getStatus() && RotationUtil.currentPriority == priority;
+	public boolean isOnTurn() {
+		return RotationUtil.currentPriority == priority;
 	}
 }

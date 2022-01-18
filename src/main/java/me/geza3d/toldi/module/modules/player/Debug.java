@@ -19,14 +19,12 @@ public class Debug extends ToldiModule {
 	ModeSetting test4 = new ModeSetting(this, "test4", 0, "A", "B", "C");
 	ColorSetting test5 = new ColorSetting(this, "test5", Color.BLUE.getRGB());
 	
-	/*
-	@Listener
+	
+	/*@Listener
 	public void onTick() {
-		PacketCallback.OUT.register(packet->{
+		ClientTickEvents.START_CLIENT_TICK.register(client ->{
 			if(getStatus()) {
-				System.out.println(packet.getClass());
 			}
-			return ActionResult.SUCCESS;
 		});
 	}*/
 }

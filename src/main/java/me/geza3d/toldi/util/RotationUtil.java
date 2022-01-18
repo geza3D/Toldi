@@ -1,5 +1,6 @@
 package me.geza3d.toldi.util;
 
+import me.geza3d.toldi.handlers.RotationHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.math.Vec3d;
 
@@ -48,5 +49,13 @@ public class RotationUtil {
 		}
 		 
 		return pitch;
+	}
+	
+	public static void rotate(float yaw, float pitch) {
+		RotationHandler.rotate(yaw, pitch);
+	}
+	
+	public static void rotate(float yaw, float pitch, int ticks) {
+		RotationHandler.rotate(yaw, pitch, ticks);
 	}
 }

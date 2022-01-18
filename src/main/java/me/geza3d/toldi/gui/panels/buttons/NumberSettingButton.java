@@ -44,7 +44,7 @@ public class NumberSettingButton extends ButtonPanel {
 			min = (double) setting.getMin();
 			value = (double) setting.getValue();
 		}
-		int sliderWidth = (int)(width * MathHelper.clamp(value / max,0,1));
+		int sliderWidth = (int)(width * MathHelper.clamp((value-min) / (max-min),0,1));
 		drawTextWithShadow(matrices, Toldi.TEXTRENDERER, new LiteralText(text), x, y, 0xffffffff);
 		textField.render(matrices, mouseX, mouseY, delta);
 		fill(matrices, x, y+10, x + width, y + height-1, GuiValues.c6);
