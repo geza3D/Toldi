@@ -119,6 +119,22 @@
 "setting.toldi.farthrow.trident.name": "Trident",
 "setting.toldi.farthrow.trident.desc": "Whether it should make tridents faster.",
 "setting.toldi.farthrow.other.name": "Other",
-"setting.toldi.farthrow.other.desc": "Whether it should make eggs and snowballs faster."
+"setting.toldi.farthrow.other.desc": "Whether it should make eggs and snowballs faster.",
+
+"module.toldi.entityesp.name": "EntityESP",
+"module.toldi.entityesp.desc": "Highlights entities.",
+"setting.toldi.entityesp.color.name": "Color",
+"setting.toldi.entityesp.color.desc": "The color.",
+"setting.toldi.entityesp.mode.name": "Mode",
+"setting.toldi.entityesp.mode.desc": "The type of ESP to use.",
+"setting.toldi.entityesp.mode.box": "Box",
+"setting.toldi.entityesp.mode.line": "Line",
+"setting.toldi.entityesp.mode.cross": "Cross",
+"setting.toldi.entityesp.mobs.name": "Mobs",
+"setting.toldi.entityesp.mobs.desc": "Should it highlight mobs?",
+"setting.toldi.entityesp.players.name": "Players",
+"setting.toldi.entityesp.players.desc": "Should it highlight players?",
+"setting.toldi.entityesp.inanimate.name": "Inanimate",
+"setting.toldi.entityesp.inanimate.desc": "Should it highlight inanimate entities?"
 
 }

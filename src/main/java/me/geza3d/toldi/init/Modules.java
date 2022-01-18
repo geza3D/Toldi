@@ -15,6 +15,7 @@ import me.geza3d.toldi.module.modules.hud.ActiveModules;
 import me.geza3d.toldi.module.modules.movement.BoatFly;
 import me.geza3d.toldi.module.modules.player.Debug;
 import me.geza3d.toldi.module.modules.player.FarThrow;
+import me.geza3d.toldi.module.modules.render.EntityESP;
 import me.geza3d.toldi.module.modules.render.Freecam;
 import me.geza3d.toldi.module.modules.render.Fullbright;
 import me.geza3d.toldi.module.modules.render.StorageESP;
@@ -42,6 +43,7 @@ public class Modules {
 	public static Freecam FREECAM;
 	public static Fullbright FULLBRIGHT;
 	public static StorageESP STORAGEESP;
+	public static EntityESP ENTITYESP;
 	
 	//Exploit
 	public static PortalGodmode PORTALGODMODE;

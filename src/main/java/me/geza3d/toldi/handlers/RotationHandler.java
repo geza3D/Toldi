@@ -1,6 +1,6 @@
 package me.geza3d.toldi.handlers;
 
-import me.geza3d.toldi.events.RenderLivingEntityCallback;
+import me.geza3d.toldi.events.RenderEntityCallback;
 import me.geza3d.toldi.events.SendMovementPacketsCallback;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.ActionResult;
@@ -65,7 +65,7 @@ public class RotationHandler {
 	private static Float prevPitch = null;
 	
 	private static void initRenderSpoofer() {
-		RenderLivingEntityCallback.PRE.register((matrices, entity) ->{
+		RenderEntityCallback.PRE.register((dispatcher, entity, x, y, z, delta, matrices, consumer, light) ->{
 			if(entity instanceof ClientPlayerEntity && rotationYaw != null && rotationPitch != null) {
 				ClientPlayerEntity player = (ClientPlayerEntity) entity;
 				yaw = player.getYaw();
@@ -80,7 +80,7 @@ public class RotationHandler {
 			}
 			return ActionResult.SUCCESS;
 		});
-		RenderLivingEntityCallback.POST.register((matrices, entity) ->{
+		RenderEntityCallback.POST.register((dispatcher, entity, x, y, z, delta, matrices, consumer, light) ->{
 			if(entity instanceof ClientPlayerEntity && yaw != null && pitch != null && prevYaw != null && prevPitch != null) {
 				ClientPlayerEntity player = (ClientPlayerEntity) entity;
 				player.headYaw = yaw;
