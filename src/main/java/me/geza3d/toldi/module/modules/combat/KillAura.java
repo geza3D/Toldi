@@ -46,6 +46,7 @@ public class KillAura extends ToldiRotatingModule {
 				Entity target = null;
 				float best = Float.MAX_VALUE;
 				float[] rotation = {0,0};
+				float[] targetRotation = {0,0};
 				for(Entity entity : getWorld().getEntities()) {
 					if(entity == getPlayer()) continue;
 					if(CombatUtil.getDistanceBetweenEntities(entity, getPlayer()) > distance.getValue()) continue;
@@ -104,6 +105,7 @@ public class KillAura extends ToldiRotatingModule {
 						float value = CombatUtil.getValueOfEntity(entity, getPlayer(), TargetMode.values()[priority.getValue()]);
 						if(value <= best) {
 							target = entity;
+							targetRotation = rotation;
 							best = value;
 						}
 					}
@@ -112,7 +114,7 @@ public class KillAura extends ToldiRotatingModule {
 					if(rotate.getValue()) {
 						super.priority = 2;
 						if(isOnTurn()) {
-							RotationUtil.rotate(rotation[0], rotation[1]);
+							RotationUtil.rotate(targetRotation[0], targetRotation[1]);
 							attackTarget(target);
 						}
 						return;

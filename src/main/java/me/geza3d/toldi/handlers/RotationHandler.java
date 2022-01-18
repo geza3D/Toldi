@@ -75,8 +75,10 @@ public class RotationHandler {
 				player.headYaw = rotationYaw;
 				player.setYaw(rotationYaw);
 				player.setPitch(rotationPitch);
+				player.bodyYaw = rotationYaw;
 				player.prevHeadYaw = rotationYaw;
 				player.prevPitch = rotationPitch;
+				player.prevBodyYaw = rotationYaw;
 			}
 			return ActionResult.SUCCESS;
 		});
@@ -86,8 +88,10 @@ public class RotationHandler {
 				player.headYaw = yaw;
 				player.setYaw(yaw);
 				player.setPitch(pitch);
+				player.bodyYaw = yaw;
 				player.prevHeadYaw = prevYaw;
 				player.prevPitch = prevPitch;
+				player.prevBodyYaw = prevYaw;
 				yaw = null;
 				pitch = null;
 				prevYaw = null;
