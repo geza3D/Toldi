@@ -12,6 +12,7 @@ import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
@@ -23,6 +24,35 @@ import net.minecraft.util.math.Matrix4f;
 
 public class RenderUtil extends DrawableHelper{
 
+	//Change these to change rendering colors directly in the BufferBuilder
+	public static RenderLayer entityCutoutNoCullOverride = null;
+	public static RenderLayer itemEntityTranslucentCull = null;
+	public static RenderLayer outlineOverride = null;
+	public static RenderLayer entityTranslucentOverride = null;
+	public static Integer redOverride = null;
+	public static Integer greenOverride = null;
+	public static Integer blueOverride = null;
+	public static Integer alphaOverride = null;
+	public static boolean shaderIdentifierOverride = false;
+	
+	public static void setRenderColor(int r, int g, int b, int a) {
+		redOverride = r;
+		greenOverride = g;
+		blueOverride = b;
+		alphaOverride = a;
+	}
+	
+	public static void clearRenderColor() {
+		redOverride = null;
+		greenOverride = null;
+		blueOverride = null;
+		alphaOverride = null;
+	}
+	
+	public static boolean hasRenderColor() {
+		return redOverride != null || greenOverride != null || blueOverride != null || alphaOverride != null;
+	}
+	
 	public static void glScissors(int x, int y, int width, int height) {
 		Window window = Toldi.CLIENT.getWindow();
 		int scale = Toldi.CLIENT.options.guiScale;

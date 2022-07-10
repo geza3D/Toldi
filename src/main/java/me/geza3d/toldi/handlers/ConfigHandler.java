@@ -69,7 +69,6 @@ public class ConfigHandler {
 	}
 	
 	private static void loadModules() {
-		System.out.println(DIR);
 		Gson gson = new Gson();
 		for(ToldiModule module : Modules.ALL) {
 			File f = new File(DIR + currentProfile + "\\" + module.getType().getTypeName() + "\\" + module.getUntranslatedName() + ".json");

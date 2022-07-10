@@ -35,3 +35,5 @@ run/
 
 # quick bats
 build.bat
+genSources.bat
+eclipse.bat

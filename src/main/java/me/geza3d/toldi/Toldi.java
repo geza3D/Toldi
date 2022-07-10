@@ -7,6 +7,7 @@ import me.geza3d.toldi.handlers.HudHandler;
 import me.geza3d.toldi.handlers.KeyBindHandler;
 import me.geza3d.toldi.handlers.RotationHandler;
 import me.geza3d.toldi.init.Modules;
+import me.geza3d.toldi.render.ToldiShaders;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -19,7 +20,7 @@ public class Toldi implements ModInitializer {
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 	public static MinecraftClient CLIENT;
 	public static TextRenderer TEXTRENDERER;
-
+	
 	@Override
 	public void onInitialize() {
 		CLIENT = MinecraftClient.getInstance();
@@ -31,6 +32,7 @@ public class Toldi implements ModInitializer {
 		KeyBindHandler.registerKeyBinds();
 		HudHandler.initHudHandler();
 		RotationHandler.initRotationHandler();
+		ToldiShaders.loadShader(CLIENT);
 	}
 
 }

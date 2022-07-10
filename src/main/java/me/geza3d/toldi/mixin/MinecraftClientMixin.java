@@ -6,8 +6,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import me.geza3d.toldi.Toldi;
+import me.geza3d.toldi.events.InitCallback;
 import me.geza3d.toldi.events.JoinLeaveCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.RunArgs;
 import net.minecraft.client.gui.screen.Screen;
 
 @Mixin(MinecraftClient.class)
@@ -16,5 +18,10 @@ public class MinecraftClientMixin {
 	@Inject(method = "disconnect(Lnet/minecraft/client/gui/screen/Screen;)V", at = @At("HEAD"))
 	public void onDisconnection(Screen screen, CallbackInfo info) {
 		if(Toldi.CLIENT.world != null) JoinLeaveCallback.LEAVE.invoker().handle();
+	}
+	
+	@Inject(method = "<init>", at = @At("TAIL"))
+	public void onInit(RunArgs args, CallbackInfo info) {
+		InitCallback.EVENT.invoker().init();
 	}
 }

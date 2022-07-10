@@ -9,6 +9,9 @@ import me.geza3d.toldi.module.settings.NumberSetting.IntegerSetting;
 import me.geza3d.toldi.module.settings.Setting.BooleanSetting;
 import me.geza3d.toldi.module.settings.Setting.ColorSetting;
 import me.geza3d.toldi.module.settings.Setting.ModeSetting;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
 
 @ToldiModule.Type(EnumModuleType.PLAYER)
 public class Debug extends ToldiModule {
@@ -19,14 +22,17 @@ public class Debug extends ToldiModule {
 	ModeSetting test4 = new ModeSetting(this, "test4", 0, "A", "B", "C");
 	ColorSetting test5 = new ColorSetting(this, "test5", Color.BLUE.getRGB());
 	
-	
-	/*@Listener
+	@Listener
 	public void onTick() {
 		ClientTickEvents.START_CLIENT_TICK.register(client ->{
 			if(getStatus()) {
+				BlockPos pos = new BlockPos(Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE);
+				long l = pos.asLong();
+				BlockPos pos2 = BlockPos.fromLong(l);
+				getPlayer().sendMessage(Text.of(pos2.getX() + ", " + pos2.getY() + ", " + pos2.getZ()), false);
 			}
 		});
-	}*/
+	}
 }
 
 

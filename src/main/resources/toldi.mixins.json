@@ -17,7 +17,10 @@
     "KeyboardMixin",
     "LightmapTextureManagerMixin",
     "EntityRenderDispatcherMixin",
-    "ClientPlayerEntityMixin"
+    "ClientPlayerEntityMixin",
+    "RenderLayerMixin",
+    "RenderLayersMixin",
+    "BufferBuilderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

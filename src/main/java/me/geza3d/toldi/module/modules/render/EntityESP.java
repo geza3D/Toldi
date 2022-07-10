@@ -1,16 +1,14 @@
 package me.geza3d.toldi.module.modules.render;
 
-import static com.mojang.blaze3d.systems.RenderSystem.blendFunc;
-import static com.mojang.blaze3d.systems.RenderSystem.depthFunc;
-import static com.mojang.blaze3d.systems.RenderSystem.disableBlend;
-import static com.mojang.blaze3d.systems.RenderSystem.enableBlend;
-
 import java.awt.Color;
-
-import org.lwjgl.opengl.GL11;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import static org.lwjgl.opengl.GL11.*;
+
+import static com.mojang.blaze3d.systems.RenderSystem.*;
+
+import me.geza3d.toldi.Toldi;
 import me.geza3d.toldi.events.RenderCallback;
 import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.EnumModuleType;
@@ -43,9 +41,10 @@ public class EntityESP extends ToldiModule{
 		RenderCallback.LAST.register((matrices, tickDelta, camera) -> {
 			if(getStatus()) {
 		        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+		        Toldi.CLIENT.getFramebuffer().beginWrite(false);
 		        enableBlend();
-				blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-				depthFunc(GL11.GL_ALWAYS);
+				blendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+				depthFunc(GL_ALWAYS);
 				for(Entity entity : getWorld().getEntities()) {
 					if(entity == getPlayer() || entity == Modules.FREECAM.cam) continue;
 					if(entity instanceof LivingEntity && mobs.getValue() && !(entity instanceof PlayerEntity)
@@ -83,7 +82,7 @@ public class EntityESP extends ToldiModule{
 				       	matrices.pop();
 					}
 				}
-				depthFunc(GL11.GL_LEQUAL);
+				depthFunc(GL_LEQUAL);
 				disableBlend();
 			}
 			return ActionResult.SUCCESS;

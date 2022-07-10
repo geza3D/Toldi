@@ -135,6 +135,16 @@
 "setting.toldi.entityesp.players.name": "Players",
 "setting.toldi.entityesp.players.desc": "Should it highlight players?",
 "setting.toldi.entityesp.inanimate.name": "Inanimate",
-"setting.toldi.entityesp.inanimate.desc": "Should it highlight inanimate entities?"
+"setting.toldi.entityesp.inanimate.desc": "Should it highlight inanimate entities?",
 
+"module.toldi.chams.name": "Chams WIP",
+"module.toldi.chams.desc": "Highlights hole entities through walls. WIP",
+"setting.toldi.chams.hidden.name": "Hidden",
+"setting.toldi.chams.hidden.desc": "What color should it have when behind blocks?",
+"setting.toldi.chams.visible.name": "Visible",
+"setting.toldi.chams.visible.desc": "What color should it have when not behind blocks?",
+"setting.toldi.chams.mode.name": "Mode",
+"setting.toldi.chams.mode.hidden": "Hidden",
+"setting.toldi.chams.mode.visible": "Visible",
+"setting.toldi.chams.mode.both": "Both"
 }
