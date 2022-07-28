@@ -1,5 +1,6 @@
 package me.geza3d.toldi.module.modules.combat;
 
+import me.geza3d.toldi.init.Modules;
 import me.geza3d.toldi.module.EnumModuleType;
 import me.geza3d.toldi.module.ToldiRotatingModule;
 import me.geza3d.toldi.module.settings.NumberSetting.DoubleSetting;
@@ -48,7 +49,7 @@ public class KillAura extends ToldiRotatingModule {
 				float[] rotation = {0,0};
 				float[] targetRotation = {0,0};
 				for(Entity entity : getWorld().getEntities()) {
-					if(entity == getPlayer()) continue;
+					if(entity == getPlayer() || entity == Modules.FREECAM.cam) continue;
 					if(CombatUtil.getDistanceBetweenEntities(entity, getPlayer()) > distance.getValue()) continue;
 					if(entity instanceof LivingEntity) {
 						if(((LivingEntity) entity).getHealth() <= 0 || ((LivingEntity) entity).isDead()) {

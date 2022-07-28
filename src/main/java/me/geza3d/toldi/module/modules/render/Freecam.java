@@ -25,7 +25,7 @@ public class Freecam extends ToldiModule{
 	DoubleSetting speed = new DoubleSetting(this, "speed", 3d, 0d, 5d);
 	
 	//Don't ask why, I was lazy...
-	VillagerEntity cam;
+	public VillagerEntity cam;
 	
 	@Override
 	public void enable() {
